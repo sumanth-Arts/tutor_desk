@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thermal Physics — Unit 1 Notes | IB MYP Physics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] },
+  svg: { fontCache: 'global' }
+};
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+<style>
+  :root{
+    --paper:#0f172a;
+    --paper2:#0f172a;
+    --ink:#f8fafc;
+    --muted:#94a3b8;
+    --line:#334155;
+    --cold:#38bdf8;
+    --cold2:#0ea5e9;
+    --mid:#2dd4bf;
+    --warm:#facc15;
+    --hot:#f87171;
+    --panel:#1e293b;
+    --code:#1e293b;
+    --focus:#38bdf8;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',system-ui,sans-serif;
+    font-size:16px;
+    line-height:1.6;
+  }
+  a{color:inherit;}
+  ::selection{background:var(--warm); color:#0f172a;}
+  :focus-visible{outline:3px solid var(--focus); outline-offset:2px;}
+
+  h1,h2,h3,h4{font-family:'Fraunces',serif; font-weight:600; color:var(--ink); line-height:1.15; margin:0 0 .4em;}
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.72rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--muted);
+  }
+
+  /* ---------- Thermal gradient signature bar ---------- 
+  .heatbar{
+    height:6px;
+    width:100%;
+    background:linear-gradient(90deg,var(--cold) 0%, var(--cold2) 24%, var(--mid) 50%, var(--warm) 76%, var(--hot) 100%);
+  } */
+
+  /* ---------- Layout shell ---------- */
+  .shell{
+    display:grid;
+    grid-template-columns:270px 1fr;
+    max-width:1280px;
+    margin:0 auto;
+  }
+  @media (max-width:900px){
+    .shell{grid-template-columns:1fr;}
+    nav.toc{position:static; height:auto; border-right:none; border-bottom:1px solid var(--line);}
+  }
+
+  /* ---------- Sidebar nav ---------- */
+  nav.toc{
+    position:sticky;
+    top:0;
+    align-self:start;
+    height:100vh;
+    overflow-y:auto;
+    padding:28px 18px 40px 28px;
+    border-right:1px solid var(--line);
+    background:var(--paper);
+  }
+  .brand{
+    font-family:'Fraunces',serif;
+    font-weight:700;
+    font-size:1.05rem;
+    color:var(--ink);
+    margin-bottom:2px;
+  }
+  .brand small{
+    display:block;
+    font-family:'JetBrains Mono',monospace;
+    font-weight:400;
+    font-size:.68rem;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-top:4px;
+  }
+  .toc-list{
+    list-style:none;
+    margin:22px 0 0;
+    padding:0;
+    border-left:2px solid var(--line);
+  }
+  .toc-list li a{
+    display:flex;
+    gap:10px;
+    align-items:baseline;
+    text-decoration:none;
+    padding:7px 0 7px 14px;
+    margin-left:-2px;
+    border-left:2px solid transparent;
+    font-size:.86rem;
+    color:var(--muted);
+    transition:color .15s, border-color .15s;
+  }
+  .toc-list li a .n{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.72rem;
+    color:var(--warm);
+    flex:0 0 auto;
+  }
+  .toc-list li a:hover, .toc-list li a.active{
+    color:var(--ink);
+    border-left-color:var(--warm);
+  }
+  .toc-foot{
+    margin-top:28px;
+    padding-top:16px;
+    border-top:1px solid var(--line);
+    font-size:.76rem;
+    color:var(--muted);
+  }
+
+  /* ---------- Main ---------- */
+  main{padding:0 0 100px; background:var(--paper);}
+
+  .hero{
+    padding:56px 56px 40px;
+    border-bottom:1px solid var(--line);
+    position:relative;
+    overflow:hidden;
+  }
+  @media (max-width:640px){ .hero{padding:40px 22px 28px;} }
+  .hero h1{font-size:clamp(2.1rem, 4vw, 3rem);}
+  .hero .sub{max-width:640px; color:var(--muted); font-size:1.02rem;}
+  .hero .thermo{
+    margin-top:26px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .chip{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.72rem;
+    letter-spacing:.03em;
+    padding:5px 11px;
+    border-radius:999px;
+    border:1px solid var(--line);
+    color:var(--muted);
+    background:var(--paper2);
+  }
+
+  section.topic{
+    padding:48px 56px;
+    border-bottom:1px solid var(--line);
+    scroll-margin-top:14px;
+  }
+  @media (max-width:640px){ section.topic{padding:34px 22px;} }
+  section.topic:nth-of-type(even){background:var(--panel);}
+
+  .topic-head{
+    display:flex;
+    align-items:flex-end;
+    gap:16px;
+    margin-bottom:22px;
+  }
+  .topic-num{
+    font-family:'JetBrains Mono',monospace;
+    font-size:1.4rem;
+    color:var(--warm);
+    font-weight:600;
+  }
+  .topic h2{font-size:1.7rem;}
+
+  .card{
+    background:var(--paper2);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:20px 24px;
+    margin:18px 0;
+    color:var(--ink);
+  }
+  .card h4{font-size:.98rem; margin-bottom:.5em; color:var(--ink);}
+  .card.formula{
+    border-left:4px solid var(--cold2);
+  }
+  .card.example{
+    border-left:4px solid var(--warm);
+  }
+  .card.note{
+    border-left:4px solid var(--mid);
+    background:#092024;
+  }
+
+  ul.clean, ol.clean{margin:.4em 0; padding-left:1.25em;}
+  ul.clean li, ol.clean li{margin:.3em 0;}
+
+  table.dtab{
+    width:100%;
+    border-collapse:collapse;
+    margin:16px 0;
+    font-size:.92rem;
+  }
+  table.dtab th, table.dtab td{
+    border:1px solid var(--line);
+    padding:8px 12px;
+    text-align:left;
+    color:var(--ink);
+  }
+  table.dtab th{
+    background:var(--panel);
+    font-family:'JetBrains Mono',monospace;
+    font-size:.72rem;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+  }
+  section.topic:nth-of-type(even) table.dtab th{background:var(--paper2);}
+
+  code, .mono{font-family:'JetBrains Mono',monospace; font-size:.86em; color:var(--cold);}
+
+  /* ---------- Practice question blocks ---------- */
+  .practice{
+    margin-top:26px;
+    padding-top:6px;
+  }
+  .practice h3{
+    font-size:1.05rem;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .practice h3::before{
+    content:"";
+    width:18px; height:18px;
+    border-radius:4px;
+    background:linear-gradient(135deg,var(--cold2),var(--warm));
+    display:inline-block;
+  }
+  details.q{
+    background:var(--paper2);
+    border:1px solid var(--line);
+    border-radius:10px;
+    margin:12px 0;
+    padding:0;
+    overflow:hidden;
+    color:var(--ink);
+  }
+  details.q > summary{
+    list-style:none;
+    cursor:pointer;
+    padding:16px 20px;
+    display:flex;
+    gap:14px;
+    align-items:flex-start;
+    justify-content:space-between;
+  }
+  details.q > summary::-webkit-details-marker{display:none;}
+  .qtext{flex:1;}
+  .qmeta{
+    display:flex;
+    gap:6px;
+    flex-wrap:wrap;
+    margin-top:8px;
+  }
+  .tag{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.65rem;
+    letter-spacing:.04em;
+    padding:2px 7px;
+    border-radius:5px;
+    background:var(--panel);
+    color:var(--muted);
+    white-space:nowrap;
+  }
+  details.q[open] > summary{border-bottom:1px solid var(--line);}
+  .toggle-ico{
+    flex:0 0 auto;
+    width:26px; height:26px;
+    border-radius:50%;
+    border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'JetBrains Mono',monospace;
+    font-size:.9rem;
+    color:var(--warm);
+  }
+  details.q[open] .toggle-ico::before{content:"–";}
+  details.q:not([open]) .toggle-ico::before{content:"+";}
+  .answer{
+    padding:16px 20px 20px;
+    background:#0b1329;
+    font-size:.95rem;
+    color:var(--ink);
+  }
+  .answer .lbl{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.68rem;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    color:var(--warm);
+    margin-bottom:6px;
+    display:block;
+  }
+
+  /* ---------- Command term legend ---------- */
+  .legend{
+    padding:40px 56px 60px;
+  }
+  @media (max-width:640px){ .legend{padding:30px 22px 40px;} }
+  .legend-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+    gap:14px;
+    margin-top:18px;
+  }
+  .legend-item{
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:12px 16px;
+    background:var(--paper2);
+  }
+  .legend-item b{font-family:'JetBrains Mono',monospace; font-size:.82rem; color:var(--cold);}
+  .legend-item p{margin:.3em 0 0; font-size:.85rem; color:var(--muted);}
+
+  footer{
+    padding:30px 56px 60px;
+    color:var(--muted);
+    font-size:.82rem;
+  }
+
+  .backtop{
+    position:fixed;
+    right:22px;
+    bottom:22px;
+    width:42px; height:42px;
+    border-radius:50%;
+    background:var(--panel);
+    color:var(--ink);
+    border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+    text-decoration:none;
+    font-size:1.1rem;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .2s;
+    z-index:50;
+  }
+  .backtop.show{opacity:.9; pointer-events:auto;}
+</style>
+</head>
+<body>
+<div class="heatbar"></div>
+
+<div class="shell">
+  <nav class="toc" id="toc">
+    <div class="brand">Thermal Physics<small>Unit 1 · IB MYP Physics · Grade 9</small></div>
+    <ul class="toc-list" id="toc-list">
+      <li><a href="#internal-energy"><span class="n">01</span>Internal Energy</a></li>
+      <li><a href="#kinetic-theory"><span class="n">02</span>Kinetic Theory of Gases</a></li>
+      <li><a href="#gas-laws"><span class="n">03</span>The Gas Laws</a></li>
+      <li><a href="#ideal-gas"><span class="n">04</span>Ideal Gas Conditions</a></li>
+      <li><a href="#conduction"><span class="n">05</span>Conduction</a></li>
+      <li><a href="#shc"><span class="n">06</span>Specific Heat Capacity</a></li>
+      <li><a href="#latent-heat"><span class="n">07</span>Latent Heat</a></li>
+      <li><a href="#water-shc"><span class="n">08</span>High SHC of Water</a></li>
+      <li><a href="#radiation"><span class="n">09</span>Thermal Radiation</a></li>
+      <li><a href="#commands"><span class="n">10</span>Command Terms</a></li>
+    </ul>
+    <div class="toc-foot">Notes compiled from the IB MYP Grade 9 syllabus and past assessment question styles. Built for integration with NotesVault.</div>
+  </nav>
+
+  <main>
+    <div class="hero">
+      <p class="eyebrow">IB MYP Physics — Grade 9 · No prescribed textbook</p>
+      <h1>Unit 1: Thermal Physics</h1>
+      <p class="sub">Internal energy, the kinetic theory of matter, the gas laws, conduction, specific and latent heat, and thermal radiation — built up from first principles, with worked examples and exam-style practice after every topic.</p>
+      <div class="thermo">
+        <span class="chip">9 topics</span>
+        <span class="chip">Worked numericals</span>
+        <span class="chip">Criterion-tagged practice questions</span>
+        <span class="chip">Command-term glossary</span>
+      </div>
+    </div>
+
+    <!-- ================= 01 INTERNAL ENERGY ================= -->
+    <section class="topic" id="internal-energy">
+      <div class="topic-head"><span class="topic-num">01</span><h2>Internal Energy</h2></div>
+
+      <p>Every substance is made of particles (atoms, ions or molecules) that are always moving and always interacting with their neighbours. <strong>Internal energy</strong> is the name given to the total energy stored inside a substance because of this.</p>
+
+      <div class="card formula">
+        <h4>Definition</h4>
+        <p>Internal energy is the <strong>sum of the random kinetic energies and the potential energies</strong> of all the particles in a substance.</p>
+        <ul class="clean">
+          <li><strong>Kinetic energy</strong> — from the random translational, vibrational and rotational motion of particles.</li>
+          <li><strong>Potential energy</strong> — from the intermolecular/interatomic forces (bonds) holding particles near or to each other.</li>
+        </ul>
+      </div>
+
+      <p>Two things change internal energy: heating a substance (which speeds up particle motion — raises kinetic energy) or changing its state (which stretches or breaks bonds between particles — changes potential energy, at constant temperature).</p>
+
+      <div class="card note">
+        <h4>Common misconception</h4>
+        <p>Temperature is <em>not</em> the same as internal energy. Temperature measures the <strong>average kinetic energy</strong> of particles. Internal energy is a <strong>total</strong> — it depends on temperature <em>and</em> on how much substance you have. A bathtub of lukewarm water has far more internal energy than a spark at 1000°C, because it contains vastly more particles.</p>
+      </div>
+
+      <div class="practice">
+        <h3>Practice questions</h3>
+
+        <details class="q">
+          <summary>
+            <div class="qtext">1. <strong>Define</strong> internal energy, identifying its two components.
+              <div class="qmeta"><span class="tag">Cr: A, i</span><span class="tag">L 1–2</span></div>
+            </div>
+            <span class="toggle-ico"></span>
+          </summary>
+          <div class="answer">
+            <span class="lbl">Model answer</span>
+            Internal energy is the sum of the random kinetic energy (due to particle motion) and the potential energy (due to the forces/bonds between particles) of all the particles in a substance.
+          </div>
+        </details>
+
+        <details class="q">
+          <summary>
+            <div class="qtext">2. Two identical mugs contain water — one at 40°C, one at 90°C, with the 90°C mug only a third full. <strong>Analyse</strong> which mug has the greater internal energy, and <strong>explain</strong> your reasoning.
+              <div class="qmeta"><span class="tag">Cr: A, ii</span><span class="tag">L 5–6</span></div>
+            </div>
+            <span class="toggle-ico"></span>
+          </summary>
+          <div class="answer">
+            <span class="lbl">Model answer</span>
+            It cannot be decided from temperature alone. The 90°C water has a higher average particle kinetic energy, but the 40°C mug contains three times the mass (three times the number of particles). Internal energy depends on both temperature and mass/particle number, so the larger, cooler mass could plausibly hold more total internal energy — a full numerical comparison would need the specific heat capacity and mass of each sample.
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- ================= 02 KINETIC THEORY ================= -->
+    <section class="topic" id="kinetic-theory">
+      <div class="topic-head"><span class="topic-num">02</span><h2>Kinetic Theory of Gases</h2></div>
+
+      <p>The kinetic theory is a model that explains the behaviour of gases by assuming they are made of tiny particles in constant, random motion.</p>
+
+      <div class="card formula">
+        <h4>The postulates (assumptions) of kinetic theory</h4>
+        <ol class="clean">
+          <li>Gases consist of a very large number of particles in continuous, random motion.</li>
+          <li>The particles themselves occupy negligible volume compared with the volume of the container.</li>
+          <li>Collisions between particles (and with the container walls) are perfectly <strong>elastic</strong> — no kinetic energy is lost overall.</li>
+          <li>There are no intermolecular forces between particles, except during the instant of collision.</li>
+          <li>The average kinetic energy of the particles is directly proportional to the absolute (Kelvin) temperature.</li>
+        </ol>
+      </div>
+
+      <h3 style="font-family:'Fraunces',serif; font-size:1.15rem; margin-top:30px;">Evidence for kinetic theory: Brownian motion</h3>
+      <p>We cannot see individual gas or liquid molecules, so how do we know they are really moving randomly? The key evidence is <strong>Brownian motion</strong>.</p>
+
+      <div class="card example">
+        <h4>The pollen-grain / smoke-cell experiment</h4>
+        <p>When a large, visible particle — a pollen grain suspended in water, or a smoke particle suspended in air — is viewed under a microscope, it is seen to move in a continuous, random, <strong>zigzag path</strong>, even though nothing appears to be pushing it.</p>
+        <ul class="clean">
+          <li>The pollen grain itself is far too large to be moved by a single molecule.</li>
+          <li>It is bombarded on <em>all sides</em>, at every instant, by huge numbers of much smaller, invisible molecules (water or air) moving randomly.</li>
+          <li>At any given instant, more molecules happen to strike from one side than another. This <strong>unequal, unbalanced bombardment</strong> gives the grain a net push in a random direction.</li>
+          <li>Because the imbalance is constantly changing, the direction of the net push keeps changing too — producing the random zigzag path we observe.</li>
+        </ul>
+        <p><strong>Scientific judgment:</strong> the zigzag motion of the visible particle is indirect but conclusive evidence that the invisible fluid molecules around it are themselves in continuous, random motion — exactly as kinetic theory assumes. We are seeing the <em>effect</em> of molecular motion, not the molecules themselves.</p>
+      </div>
+
+      <div class="card note">
+        <h4>Temperature and Brownian motion</h4>
+        <p>Raising the temperature of the fluid increases the average kinetic energy of its molecules (postulate 5 above). Faster-moving, more energetic molecules strike the visible particle harder and more often, so the zigzag path becomes more vigorous — larger, faster, more erratic steps.</p>
+      </div>
+
+      <div class="practice">
+        <h3>Practice questions</h3>
+
+        <details class="q">
+          <summary>
+            <div class="qtext">1. A student observes a suspension of pollen grains in water through a microscope and notices the grains moving in random, zigzag paths. <strong>Analyse</strong> this observation to explain the evidence it provides for the kinetic theory of matter. Make a scientifically supported judgment about what causes this specific movement.
+              <div class="qmeta"><span class="tag">Cr: A, ii, iii</span><span class="tag">L 7–8</span></div>
+            </div>
+            <span class="toggle-ico"></span>
+          </summary>
+          <div class="answer">
+            <span class="lbl">Model answer</span>
+            The pollen grain is visible under the microscope, but the water molecules surrounding it are not — they are far too small to resolve optically. The grain moves because it is constantly and randomly bombarded by these invisible, fast-moving water molecules from every direction. Since the number and force of impacts from each side is never perfectly balanced at any instant, the grain experiences a net resultant force that keeps changing in size and direction, producing the observed random zigzag path. This is strong evidence for kinetic theory because it shows indirectly that the fluid is made of discrete particles in continuous, random motion — exactly what the kinetic model predicts, even though the molecules themselves cannot be seen. (This phenomenon is called Brownian motion.)
+          </div>
+        </details>
+
+        <details class="q">
+          <summary>
+            <div class="qtext">2. A student wants to investigate how changing the absolute temperature <em>T</em> of air inside a smoke cell affects the Brownian motion of smoke particles.<br>
+              (a) <strong>Describe</strong> a clear, testable scientific question for this investigation.<br>
+              (b) <strong>Design</strong> a method, clearly stating the independent, dependent and two controlled variables, how data will be collected reliably, and one safety measure.
+              <div class="qmeta"><span class="tag">Cr: B, i, iii, iv</span><span class="tag">L 5–6</span></div>
+            </div>
+            <span class="toggle-ico"></span>
+          </summary>
+          <div class="answer">
+            <span class="lbl">Model answer</span>
+            <strong>(a) Research question:</strong> "How does increasing the absolute temperature of the air inside a smoke cell affect the average speed of the random (Brownian) motion of the smoke particles, as observed under a microscope?"<br><br>
+            <strong>(b) Method outline:</strong>
+            <ul class="clean">
+              <li><strong>Independent variable:</strong> absolute temperature of the air in the smoke cell (heated using the electric heating element in steps, e.g. 293 K, 303 K, 313 K, 323 K, 333 K), measured with the digital thermometer.</li>
+              <li><strong>Dependent variable:</strong> the average speed / degree of erratic movement of a smoke particle, estimated by tracking one particle's position on a grid at fixed time intervals (e.g. every 2 seconds for 30 seconds) and calculating average displacement per interval.</li>
+              <li><strong>Controlled variables:</strong> (i) the concentration/amount of smoke introduced into the cell, and (ii) the light intensity of the bright light source used to illuminate the particles.</li>
+              <li><strong>Reliability:</strong> repeat the tracking of the same particle (or several particles) three times at each temperature and calculate a mean displacement, discarding anomalous readings.</li>
+              <li><strong>Safety:</strong> allow the electric heating element and smoke cell to cool before handling, and keep the bright light source away from the eyes / do not view it directly.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="q">
+          <summary>
+            <div class="qtext">3. <strong>State</strong> two assumptions of the kinetic theory of gases, and <strong>outline</strong> why real gases deviate from these assumptions at high pressure.
+              <div class="qmeta"><span class="tag">Cr: A, i, ii</span><span class="tag">L 3–4</span></div>
+            </div>
+            <span class="toggle-ico"></span>
+          </summary>
+          <div class="answer">
+            <span class="lbl">Model answer</span>
+            Two assumptions: (1) particles occupy negligible volume compared to the container, and (2) there are no intermolecular forces except during collisions. At high pressure, the gas is compressed into a much smaller volume, so the actual volume of the particles is no longer negligible compared to the container, and the particles are forced much closer together, so intermolecular forces become significant. Both assumptions break down, and the gas deviates from ideal behaviour.
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- ================= 03 GAS LAWS ================= -->
+    <section class="topic" id="gas-laws">
+      <div class="topic-head"><span class="topic-num">03</span><h2>The Gas Laws</h2></div>
+      <p>The gas laws describe how pressure (P), volume (V) and absolute temperature (T, in kelvin) of a fixed mass of gas relate to each other. Each law holds one variable constant.</p>
+
+      <table class="dtab">
+        <tr><th>Law</th><th>Held constant</th><th>Relationship</th><th>Kinetic theory explanation</th></tr>
+        <tr>
+          <td><strong>Boyle's Law</strong></td>
+          <td>Temperature</td>
+          <td>\(P_1V_1 = P_2V_2\)</td>
+          <td>Smaller volume → particles hit the walls more often per second → higher pressure.</td>
+        </tr>
+        <tr>
+          <td><strong>Pressure Law</strong> (Gay-Lussac's)</td>
+          <td>Volume</td>
+          <td>\(\dfrac{P_1}{T_1} = \dfrac{P_2}{T_2}\)</td>
+          <td>Higher T → particles move faster → hit the walls harder and more often → higher pressure.</td>
+        </tr>
+        <tr>
+          <td><strong>Charles's Law</strong></td>
+          <td>Pressure</td>
+          <td>\(\dfrac{V_1}{T_1} = \dfrac{V_2}{T_2}\)</td>
+          <td>Higher T → particles move faster; volume must expand so wall-collisions stay frequent/hard enough to keep pressure constant.</td>
+        </tr>
+        <tr>
+          <td><strong>Combined Gas Law</strong></td>
+          <td>—</td>
+          <td>\(\dfrac{P_1V_1}{T_1} = \dfrac{P_2V_2}{T_2}\)</td>
+          <td>Used when P, V and T can all change together.</td>
+        </tr>
+      </table>
+
+      <div class="card note">
+        <h4>Always use absolute temperature</h4>
+        <p>All gas law calculations require temperature in <strong>kelvin</strong>, never °C — because the relationships are direct proportions to absolute temperature. Convert with \(T(\text{K}) = T(°\text{C}) + 273\).</p>
+      </div>
+
+      <div class="card example">
+        <h4>Worked example</h4>
+        <p>A gas occupies 2.0 m³ at a pressure of 100 kPa and 27°C. It is compressed to 0.5 m³ and heated to 127°C. Find the new pressure.</p>
+        <p class="mono">T₁ = 27 + 273 = 300 K &nbsp;&nbsp; T₂ = 127 + 273 = 400 K</p>
+        \[ \frac{P_1V_1}{T_1} = \frac{P_2V_2}{T_2} \;\Rightarrow\; P_2 = \frac{P_1V_1T_2}{T_1V_2} = \frac{100 \times 2.0 \times 400}{300 \times 0.5} \]
+        <p class="mono">P₂ = 533.3 kPa</p>
+      </div>
+
+      <div class="practice">
+        <h3>Practice questions</h3>
+        <details class="q">
+          <summary><div class="qtext">1. <strong>State</strong> Boyle's Law in words and as an equation.
+            <div class="qmeta"><span class="tag">Cr: A, i</span><span class="tag">L 1–2</span></div></div>
+            <span class="toggle-ico"></span></summary>
+          <div class="answer"><span class="lbl">Model answer</span>
+            At constant temperature, the pressure of a fixed mass of gas is inversely proportional to its volume: \(P_1V_1 = P_2V_2\).</div>
+        </details>
+        <details class="q">
+          <summary><div class="qtext">2. A sealed syringe holds 40 cm³ of air at 101 kPa and 20°C. It is pushed down to 25 cm³ while its temperature is kept constant. <strong>Calculate</strong> the new pressure.
+            <div class="qmeta"><span class="tag">Cr: A, iii</span><span class="tag">L 5–6</span></div></div>
+            <span class="toggle-ico"></span></summary>
+          <div class="answer"><span class="lbl">Model answer</span>
+            \(P_1V_1 = P_2V_2 \Rightarrow P_2 = \dfrac{101 \times 40}{25} = 161.6\text{ kPa}\)</div>
+        </details>
+        <details class="q">
+          <summary><div class="qtext">3. <strong>Explain</strong>, using kinetic theory, why the pressure of a gas in a sealed, rigid container increases when the gas is heated.
+            <div class="qmeta"><span class="tag">Cr: A, ii</span><span class="tag">L 3–4</span></div></div>
+            <span class="toggle-ico"></span></summary>
+          <div class="answer"><span class="lbl">Model answer</span>
+            Heating increases the average kinetic energy of the gas particles, so their average speed increases. Since the container is rigid, volume cannot change, so the faster particles collide with the walls both more frequently and with greater force per collision. Since pressure results from the total force of these collisions per unit area, pressure increases.</div>
+        </details>
+      </div>
+    </section>
+
+    <!-- ================= 04 IDEAL GAS CONDITIONS ================= -->
+    <section class="topic" id="ideal-gas">
+      <div class="topic-head"><span class="topic-num">04</span><h2>Conditions for the Ideal Gas Approximation</h2></div>
+      <p>An "ideal gas" is a theoretical gas that perfectly obeys the kinetic theory assumptions and the gas laws at all pressures and temperatures. Real gases only <strong>approximate</strong> this behaviour under certain conditions.</p>
+
+      <table class="dtab">
+        <tr><th>Condition</th><th>Why it makes the approximation better</th></tr>
+        <tr><td>Low pressure</td><td>Particles are far apart, so their own volume is negligible compared with the container, and intermolecular forces are weak.</td></tr>
+        <tr><td>High temperature</td><td>Particles move fast enough that weak intermolecular attractions have negligible effect on their motion.</td></tr>
+      </table>
+
+      <div class="card note">
+        <h4>When gases deviate most from ideal behaviour</h4>
+        <p>Real gases deviate significantly from the ideal gas model at <strong>high pressure and low temperature</strong> — conditions found, for instance, just before a gas condenses into a liquid. Here, particle volume is no longer negligible and intermolecular attractive forces become significant, both of which are ignored by kinetic theory.</p>
+      </div>
+
+      <div class="practice">
+        <h3>Practice questions</h3>
+        <details class="q">
+          <summary><div class="qtext">1. <strong>Identify</strong> two conditions under which a real gas behaves most like an ideal gas.
+            <div class="qmeta"><span class="tag">Cr: A, i</span><span class="tag">L 1–2</span></div></div>
+            <span class="toggle-ico"></span></summary>
+          <div class="answer"><span class="lbl">Model answer</span> Low pressure and high temperature.</div>
+        </details>
+        <details class="q">
+          <summary><div class="qtext">2. <strong>Discuss</strong> why a gas is least likely to behave ideally just before it condenses into a liquid.
+            <div class="qmeta"><span class="tag">Cr: A, ii</span><span class="tag">L 5–6</span></div></div>
+            <span class="toggle-ico"></span></summary>
+          <div class="answer"><span class="lbl">Model answer</span>
+            Just before condensation, the gas is typically at low temperature and often high pressure, so particles are close together and moving slowly. This means intermolecular attractive forces (which kinetic theory assumes are negligible) become strong enough to noticeably affect particle motion, and the particles' own volume is no longer negligible compared with the space between them. Both core assumptions of the ideal gas model fail, so behaviour deviates most from ideal at this point.</div>
+        </details>
+      </div>
+    </section>
+
+    <!-- ================= 05 CONDUCTION ================= -->
+    <section class="topic" id="conduction">
+      <div class="topic-head"><span class="topic-num">05</span><h2>Conduction — Qualitative Analysis</h2></div>
+      <p>Conduction is the transfer of thermal energy through a material (or between materials in contact) without any overall, bulk movement of the material itself. It happens through particle-to-particle interactions.</p>
+
+      <div class="card formula">
+        <h4>Mechanism</h4>
+        <ul class="clean">
+          <li><strong>In all materials:</strong> particles at the hot end vibrate more vigorously and collide with neighbouring particles, passing on kinetic energy step by step through the material.</li>
+          <li><strong>In metals specifically:</strong> conduction is much faster because metals also have <strong>free (delocalised) electrons</strong> that gain kinetic energy at the hot end and move rapidly through the metal, transferring energy far more quickly than vibration alone.</li>
+        </ul>
+      </div>
+
+      <p>The <strong>rate</strong> of thermal energy transfer by conduction depends on three factors:</p>
+
+      <table class="dtab">
+        <tr><th>Factor</th><th>Effect on rate of conduction</th></tr>
+        <tr><td>Type of material</td><td>Metals (free electrons) conduct much faster than non-metals/insulators (vibration only, e.g. wood, plastic, air).</td></tr>
+        <tr><td>Cross-sectional area</td><td>A larger cross-sectional area gives more particles/electrons a path to transfer energy simultaneously, so the rate increases.</td></tr>
+        <tr><td>Temperature gradient</td><td>A steeper temperature difference over a given distance increases the rate of energy transfer — energy flows faster from hot to cold when the difference is larger.</td></tr>
+      </table>
+
+      <div class="practice">
+        <h3>Practice questions</h3>
+        <details class="q">
+          <summary><div class="qtext">1. <strong>Explain</strong> why metals are much better conductors of thermal energy than non-metals.
+            <div class="qmeta"><span class="tag">Cr: A, ii</span><span class="tag">L 3–4</span></div></div>
+            <span class="toggle-ico"></span></summary>
+          <div class="answer"><span class="lbl">Model answer</span>
+            In non-metals, thermal energy is transferred only through particle vibrations passed between neighbouring particles, which is relatively slow. Metals additionally contain free (delocalised) electrons, which can move rapidly through the whole structure carrying kinetic energy away from the hot region much faster than vibration alone, making metals much better conductors.</div>
+        </details>
+        <details class="q">
+          <summary><div class="qtext">2. Two identical rods of the same metal are heated at one end. Rod A has double the cross-sectional area of Rod B. <strong>Predict and justify</strong> which rod conducts thermal energy faster.
+            <div class="qmeta"><span class="tag">Cr: A, ii</span><span class="tag">L 5–6</span></div></div>
+            <span class="toggle-ico"></span></summary>
+          <div class="answer"><span class="lbl">Model answer</span>
+            Rod A conducts faster. A larger cross-sectional area provides more particles and free electrons across the width of the rod to transfer thermal energy at the same time, increasing the overall rate of conduction, even though both rods are the same material and length.</div>
+        </details>
+      </div>
+    </section>
+
+    <!-- ================= 06 SHC ================= -->
+    <section class="topic" id="shc">
+      <div class="topic-head"><span class="topic-num">06</span><h2>Specific Heat Capacity</h2></div>
+      <p>Different substances need different amounts of energy to heat up by the same amount. <strong>Specific heat capacity (c)</strong> quantifies this.</p>
+
+      <div class="card formula">
+        <h4>Definition &amp; formula</h4>
+        <p>Specific heat capacity is the energy required to raise the temperature of <strong>1 kg</strong> of a substance by <strong>1°C</strong> (equivalently, 1 K).</p>
+        \[ Q = mc\Delta T \]
+        <p class="mono">Q = thermal energy transferred (J) &nbsp;·&nbsp; m = mass (kg) &nbsp;·&nbsp; c = specific heat capacity (J kg⁻¹ °C⁻¹) &nbsp;·&nbsp; ΔT = temperature change (°C or K)</p>
+      </div>
+
+      <table class="dtab">
+        <tr><th>Substance</th><th>Specific heat capacity (J kg⁻¹ °C⁻¹), approx.</th></tr>
+        <tr><td>Water</td><td>4 200</td></tr>
+        <tr><td>Ice</td><td>2 100</td></tr>
+        <tr><td>Aluminium</td><td>900</td></tr>
+        <tr><td>Iron</td><td>450</td></tr>
+        <tr><td>Copper</td><td>390</td></tr>
+      </table>
+
+      <div class="card example">
+        <h4>Worked example</h4>
+        <p>How much energy is needed to raise the temperature of 2.5 kg of water from 20°C to 80°C? (c<sub>water</sub> = 4200 J kg⁻¹ °C⁻¹)</p>
+        \[ Q = mc\Delta T = 2.5 \times 4200 \times (80-20) = 2.5 \times 4200 \times 60 \]
+        <p class="mono">Q = 630 000 J = 630 kJ</p>
+      </div>
+
+      <div class="practice">
+        <h3>Practice questions</h3>
+        <details class="q">
+          <summary><div class="qtext">1. <strong>Define</strong> specific heat capacity, stating its SI unit.
+            <div class="qmeta"><span class="tag">Cr: A, i</span><span class="tag">L 1–2</span></div></div>
+            <span class="toggle-ico"></span></summary>
+          <div class="answer"><span class="lbl">Model answer</span>
+            Specific heat capacity is the energy required to raise the temperature of 1 kg of a substance by 1°C. Its SI unit is J kg⁻¹ K⁻¹ (or equivalently J kg⁻¹ °C⁻¹).</div>
+        </details>
+        <details class="q">
+          <summary><div class="qtext">2. A 0.4 kg aluminium block absorbs 18 000 J of energy and its temperature rises by 50°C. <strong>Calculate</strong> the specific heat capacity of aluminium from this data, and <strong>compare</strong> your answer with the accepted value.
+            <div class="qmeta"><span class="tag">Cr: A, iii · Cr: C, ii</span><span class="tag">L 5–6</span></div></div>
+            <span class="toggle-ico"></span></summary>
+          <div class="answer"><span class="lbl">Model answer</span>
+            \(c = \dfrac{Q}{m\Delta T} = \dfrac{18000}{0.4 \times 50} = 900\text{ J kg}^{-1}\text{°C}^{-1}\). This matches the accepted value for aluminium (≈900 J kg⁻¹°C⁻¹) closely, suggesting the experimental data is reliable.</div>
+        </details>
+        <details class="q">
+          <summary><div class="qtext">3. Equal masses of water and iron start at the same temperature and are heated with the same amount of energy. <strong>Analyse</strong> which one will reach a higher final temperature, and why.
+            <div class="qmeta"><span class="tag">Cr: A, ii</span><span class="tag">L 5–6</span></div></div>
+            <span class="toggle-ico"></span></summary>
+          <div class="answer"><span class="lbl">Model answer</span>
+            Iron will reach a higher final temperature. Since \(\Delta T = Q/(mc)\), and iron has a much lower specific heat capacity (≈450) than water (≈4200), the same energy input produces a much larger temperature rise in iron than in water, for equal masses.</div>
+        </details>
+      </div>
+    </section>
+
+    <!-- ================= 07 LATENT HEAT ================= -->
+    <section class="topic" id="latent-heat">
+      <div class="topic-head"><span class="topic-num">07</span><h2>Latent Heat</h2></div>
+      <p>When a substance changes state (melts, freezes, boils, condenses), its temperature stays <strong>constant</strong> even though energy is still being transferred. This energy is called <strong>latent heat</strong> — it changes the potential energy of the particles (breaking or forming bonds), not their kinetic energy.</p>
+
+      <div class="card formula">
+        <h4>Definition &amp; formula</h4>
+        <p>Latent heat is the energy required to change the state of a substance <strong>without any change in temperature</strong>.</p>
+        \[ Q = mL \]
+        <p class="mono">Q = thermal energy (J) &nbsp;·&nbsp; m = mass (kg) &nbsp;·&nbsp; L = specific latent heat (J kg⁻¹)</p>
+        <ul class="clean">
+          <li><strong>Specific latent heat of fusion</strong> — energy per kg to change between solid and liquid (melting/freezing).</li>
+          <li><strong>Specific latent heat of vaporization</strong> — energy per kg to change between liquid and gas (boiling/condensing). This is always larger than latent heat of fusion, since far more bonds must be fully broken (not just loosened) to separate particles into a gas.</li>
+        </ul>
+      </div>
+
+      <div class="card note">
+        <h4>Reading a heating curve</h4>
+        <p>On a temperature–time graph of a substance being heated at a constant rate, the temperature rises steadily (specific heat capacity applies), then <strong>flattens completely</strong> during a change of state (latent heat applies — all the energy goes into breaking bonds, none into raising temperature), then rises again once the change of state is complete.</p>
+      </div>
+
+      <div class="card example">
+        <h4>Worked example</h4>
+        <p>Calculate the total energy needed to convert 0.2 kg of ice at 0°C completely into water at 0°C. (Specific latent heat of fusion of ice = 334 000 J kg⁻¹)</p>
+        \[ Q = mL = 0.2 \times 334000 \]
+        <p class="mono">Q = 66 800 J = 66.8 kJ</p>
+      </div>
+
+      <div class="practice">
+        <h3>Practice questions</h3>
+        <details class="q">
+          <summary><div class="qtext">1. <strong>Explain</strong> why the temperature of boiling water stays at 100°C even while it continues to absorb energy from a heat source.
+            <div class="qmeta"><span class="tag">Cr: A, ii</span><span class="tag">L 3–4</span></div></div>
+            <span class="toggle-ico"></span></summary>
+          <div class="answer"><span class="lbl">Model answer</span>
+            During boiling, the energy absorbed is used entirely as latent heat — to overcome the intermolecular forces holding the liquid particles together so they can separate into a gas. This energy increases the particles' potential energy, not their kinetic energy, so the average particle speed (and therefore the temperature) does not change until the change of state is complete.</div>
+        </details>
+        <details class="q">
+          <summary><div class="qtext">2. How much energy is needed to boil away 0.05 kg of water already at 100°C? (Specific latent heat of vaporization of water = 2 260 000 J kg⁻¹) <strong>Calculate</strong> your answer.
+            <div class="qmeta"><span class="tag">Cr: A, iii</span><span class="tag">L 5–6</span></div></div>
+            <span class="toggle-ico"></span></summary>
+          <div class="answer"><span class="lbl">Model answer</span>
+            \(Q = mL = 0.05 \times 2260000 = 113000\text{ J} = 113\text{ kJ}\)</div>
+        </details>
+        <details class="q">
+          <summary><div class="qtext">3. <strong>Sketch and describe</strong> (in words) the shape of a temperature–time graph for a solid heated at a constant rate until it becomes a gas, and label which sections involve specific heat capacity and which involve latent heat.
+            <div class="qmeta"><span class="tag">Cr: A, i</span><span class="tag">L 3–4</span></div></div>
+            <span class="toggle-ico"></span></summary>
+          <div class="answer"><span class="lbl">Model answer</span>
+            The graph rises steadily (solid warming — specific heat capacity), then flattens at the melting point (solid → liquid — latent heat of fusion), then rises steadily again (liquid warming — specific heat capacity), then flattens at the boiling point (liquid → gas — latent heat of vaporization), then rises again (gas warming — specific heat capacity). The two flat sections are the state changes; the three rising sections are where specific heat capacity applies.</div>
+        </details>
+      </div>
+    </section>
+
+    <!-- ================= 08 HIGH SHC OF WATER ================= -->
+    <section class="topic" id="water-shc">
+      <div class="topic-head"><span class="topic-num">08</span><h2>Applications of the High SHC of Water</h2></div>
+      <p>Water's specific heat capacity (≈4200 J kg⁻¹°C⁻¹) is unusually high compared with most common substances. This means water heats up slowly and cools down slowly for a given energy transfer — a property put to use in many everyday and engineering contexts.</p>
+
+      <table class="dtab">
+        <tr><th>Application</th><th>How the high SHC of water is exploited</th></tr>
+        <tr><td>Car radiators / industrial cooling systems</td><td>Water circulates through an engine, absorbing large amounts of thermal energy with only a modest temperature rise, then releases it elsewhere — an efficient coolant.</td></tr>
+        <tr><td>Coastal vs. inland (continental) climates</td><td>The sea absorbs and releases large amounts of energy for a small temperature change, so coastal regions have milder, more stable temperatures year-round than inland regions at the same latitude.</td></tr>
+        <tr><td>Sea breezes / land breezes</td><td>Land heats up (and cools down) faster than the sea during the day/night because it has a much lower SHC, driving convective air movement between land and sea.</td></tr>
+        <tr><td>Hot water bottles</td><td>Water stores a large amount of thermal energy per kg for a given temperature, and releases it slowly over time, making it effective for sustained warmth.</td></tr>
+        <tr><td>The human body</td><td>The body is largely water, which helps buffer core temperature against rapid fluctuations from external or internal changes.</td></tr>
+      </table>
+
+      <div class="practice">
+        <h3>Practice questions</h3>
+        <details class="q">
+          <summary><div class="qtext">1. <strong>Explain</strong>, in terms of specific heat capacity, why coastal cities tend to have smaller temperature differences between day and night than cities far inland.
+            <div class="qmeta"><span class="tag">Cr: A, ii</span><span class="tag">L 5–6</span></div></div>
+            <span class="toggle-ico"></span></summary>
+          <div class="answer"><span class="lbl">Model answer</span>
+            The sea has a much higher specific heat capacity than land, so for the same energy gained from the sun during the day (or lost at night), the sea's temperature changes far less than land's. Air near the coast is influenced by the sea's stable temperature, moderating the local climate and reducing the day–night temperature range compared with inland areas dominated by land, which heats and cools quickly.</div>
+        </details>
+        <details class="q">
+          <summary><div class="qtext">2. <strong>Suggest</strong> why water, rather than a metal like copper, is used as the coolant in most car engines, despite copper being a much better thermal conductor.
+            <div class="qmeta"><span class="tag">Cr: C, ii</span><span class="tag">L 5–6</span></div></div>
+            <span class="toggle-ico"></span></summary>
+          <div class="answer"><span class="lbl">Model answer</span>
+            Water's role is to absorb and carry away large quantities of thermal energy while flowing as a liquid, which requires a high specific heat capacity so its own temperature does not rise too quickly (and cause it to boil) while doing so. Copper's high thermal conductivity is useful for spreading heat through a solid quickly, but it is not a fluid that can circulate and physically transport energy away from the engine the way water can.</div>
+        </details>
+      </div>
+    </section>
+
+    <!-- ================= 09 THERMAL RADIATION ================= -->
+    <section class="topic" id="radiation">
+      <div class="topic-head"><span class="topic-num">09</span><h2>Thermal Radiation</h2></div>
+      <p>Unlike conduction and convection, <strong>thermal radiation</strong> is the transfer of energy by electromagnetic waves, and needs <strong>no medium</strong> — it can travel through a vacuum (this is how energy reaches Earth from the Sun). Every object above absolute zero emits thermal radiation.</p>
+
+      <div class="card formula">
+        <h4>The black body</h4>
+        <p>A <strong>black body</strong> is an idealised object that absorbs <strong>all</strong> electromagnetic radiation falling on it (reflecting none), and is therefore also the most efficient possible emitter of radiation at any given temperature.</p>
+      </div>
+
+      <div class="card formula">
+        <h4>Stefan–Boltzmann Law</h4>
+        \[ L = \sigma A T^4 \]
+        <p class="mono">L = luminosity / power radiated (W) &nbsp;·&nbsp; σ = Stefan–Boltzmann constant (5.67 × 10⁻⁸ W m⁻² K⁻⁴) &nbsp;·&nbsp; A = surface area (m²) &nbsp;·&nbsp; T = absolute temperature (K)</p>
+        <p>Because power depends on \(T^4\), even a small increase in temperature causes a very large increase in radiated power.</p>
+      </div>
+
+      <div class="card formula">
+        <h4>Luminosity and apparent brightness</h4>
+        <p><strong>Luminosity (L)</strong> is the total power radiated by an object (e.g. a star) in all directions — an intrinsic property of the object itself, independent of the observer's distance.</p>
+        <p><strong>Apparent brightness (b)</strong> is how bright the object <em>appears</em> from a given distance — it decreases with the square of the distance, since the same total power spreads out over an ever-larger sphere:</p>
+        \[ b = \frac{L}{4\pi d^2} \]
+        <p class="mono">b = apparent brightness (W m⁻²) &nbsp;·&nbsp; L = luminosity (W) &nbsp;·&nbsp; d = distance to the source (m)</p>
+      </div>
+
+      <div class="card formula">
+        <h4>Emission spectrum &amp; Wien's Displacement Law</h4>
+        <p>A hot object emits a <strong>continuous spectrum</strong> of electromagnetic wavelengths (a black-body spectrum), but the intensity peaks at one particular wavelength. Hotter objects peak at <strong>shorter</strong> wavelengths (bluer light); cooler objects peak at <strong>longer</strong> wavelengths (redder light).</p>
+        \[ \lambda_{max}T = \text{constant} \approx 2.9\times10^{-3}\ \text{m K} \]
+        <p class="mono">λ<sub>max</sub> = wavelength of peak emission (m) &nbsp;·&nbsp; T = absolute temperature (K)</p>
+      </div>
+
+      <div class="card example">
+        <h4>Worked example</h4>
+        <p>A star has a surface temperature of 6000 K and a radius of 7 × 10⁸ m. Calculate its luminosity, and the wavelength at which it emits most strongly.</p>
+        <p class="mono">A = 4πr² = 4π(7×10⁸)² ≈ 6.16×10¹⁸ m²</p>
+        \[ L = \sigma A T^4 = (5.67\times10^{-8})(6.16\times10^{18})(6000)^4 \approx 4.5\times10^{26}\text{ W} \]
+        \[ \lambda_{max} = \frac{2.9\times10^{-3}}{6000} \approx 4.83\times10^{-7}\text{ m} \approx 483\text{ nm (blue-green light)} \]
+      </div>
+
+      <div class="practice">
+        <h3>Practice questions</h3>
+        <details class="q">
+          <summary><div class="qtext">1. <strong>Distinguish</strong> between conduction and thermal radiation as methods of energy transfer.
+            <div class="qmeta"><span class="tag">Cr: A, i</span><span class="tag">L 1–2</span></div></div>
+            <span class="toggle-ico"></span></summary>
+          <div class="answer"><span class="lbl">Model answer</span>
+            Conduction transfers thermal energy through particle collisions and requires a material medium (it cannot happen through a vacuum). Thermal radiation transfers energy via electromagnetic waves and requires no medium at all — it can travel through a vacuum, such as space between the Sun and Earth.</div>
+        </details>
+        <details class="q">
+          <summary><div class="qtext">2. Two stars have the same luminosity, but Star X is twice as far from Earth as Star Y. <strong>Compare</strong> their apparent brightnesses as seen from Earth.
+            <div class="qmeta"><span class="tag">Cr: A, ii</span><span class="tag">L 5–6</span></div></div>
+            <span class="toggle-ico"></span></summary>
+          <div class="answer"><span class="lbl">Model answer</span>
+            Since \(b = L/(4\pi d^2)\) and luminosity is equal, apparent brightness is inversely proportional to \(d^2\). Star X is twice as far away, so \(d_X = 2d_Y\), giving \(b_X = L/(4\pi(2d_Y)^2) = \tfrac{1}{4}\cdot L/(4\pi d_Y^2) = \tfrac{1}{4}b_Y\). Star X appears one quarter as bright as Star Y.</div>
+        </details>
+        <details class="q">
+          <summary><div class="qtext">3. Star A appears bluish-white and Star B appears reddish. <strong>Analyse</strong>, using Wien's Law, which star has the higher surface temperature and explain your reasoning.
+            <div class="qmeta"><span class="tag">Cr: A, iii</span><span class="tag">L 7–8</span></div></div>
+            <span class="toggle-ico"></span></summary>
+          <div class="answer"><span class="lbl">Model answer</span>
+            Star A has the higher surface temperature. Wien's Law (\(\lambda_{max}T = \text{constant}\)) shows that peak emission wavelength is inversely proportional to temperature. Blue-white light has a shorter wavelength than red light, so the star with the shorter peak wavelength (Star A, bluish-white) must have the higher absolute temperature, while Star B's longer, redder peak wavelength indicates a lower surface temperature.</div>
+        </details>
+        <details class="q">
+          <summary><div class="qtext">4. A metal sphere's absolute temperature is doubled while its surface area stays the same. <strong>Calculate</strong> the factor by which its radiated power increases, according to the Stefan–Boltzmann law.
+            <div class="qmeta"><span class="tag">Cr: A, iii</span><span class="tag">L 5–6</span></div></div>
+            <span class="toggle-ico"></span></summary>
+          <div class="answer"><span class="lbl">Model answer</span>
+            Since \(L = \sigma A T^4\) and only T changes: doubling T multiplies power by \(2^4 = 16\). Radiated power increases by a factor of 16.</div>
+        </details>
+      </div>
+    </section>
+
+    <!-- ================= 10 COMMAND TERMS ================= -->
+    <section class="legend" id="commands">
+      <p class="eyebrow">Reference</p>
+      <h2 style="font-size:1.7rem;">IB MYP Sciences — Command Term Glossary</h2>
+      <p style="color:var(--muted); max-width:640px;">The exact verb in a question tells you how much depth is expected. This is the level scale used in the criterion tags above (Cr = criterion strand, L = achievement level band).</p>
+      <div class="legend-grid">
+        <div class="legend-item"><b>Define / State / Identify</b><p>Give a precise, brief answer — a term, fact or list, with no explanation required. (Typically L 1–4)</p></div>
+        <div class="legend-item"><b>Describe</b><p>Give a detailed account, in words, of a process, structure or feature.</p></div>
+        <div class="legend-item"><b>Explain</b><p>Give a reasoned account — state the "how" or "why", showing cause and effect.</p></div>
+        <div class="legend-item"><b>Outline</b><p>Give a brief summary or overview of the main points, without full detail.</p></div>
+        <div class="legend-item"><b>Analyse</b><p>Break a situation or observation down to identify essential elements and relationships, and interpret them.</p></div>
+        <div class="legend-item"><b>Compare / Distinguish</b><p>Give similarities and/or differences between two or more items.</p></div>
+        <div class="legend-item"><b>Discuss</b><p>Offer a balanced, considered review including a range of arguments, factors or hypotheses.</p></div>
+        <div class="legend-item"><b>Design / Construct</b><p>Produce a plan, method, model or representation that fulfils certain criteria.</p></div>
+        <div class="legend-item"><b>Suggest</b><p>Propose a plausible solution, explanation or hypothesis, appropriately justified.</p></div>
+        <div class="legend-item"><b>Calculate</b><p>Obtain a numerical answer, showing all relevant working.</p></div>
+      </div>
+      <div class="legend-grid" style="margin-top:10px;">
+        <div class="legend-item"><b>Criterion A</b><p>Knowing and understanding — recalling, applying and analysing scientific knowledge.</p></div>
+        <div class="legend-item"><b>Criterion B</b><p>Inquiring and designing — forming questions, hypotheses and experimental methods.</p></div>
+        <div class="legend-item"><b>Criterion C</b><p>Processing and evaluating — presenting, interpreting and evaluating data and conclusions.</p></div>
+        <div class="legend-item"><b>Criterion D</b><p>Reflecting on the impacts of science — evaluating implications for society and environment.</p></div>
+      </div>
+    </section>
+
+    <footer>
+      Unit 1: Thermal Physics — compiled from the school's Grade 9 IB MYP topic list and past-assessment question styles, for private tutoring use. Formulas: \(Q=mc\Delta T\), \(Q=mL\), \(P_1V_1/T_1=P_2V_2/T_2\), \(L=\sigma AT^4\), \(b=L/4\pi d^2\), \(\lambda_{max}T=2.9\times10^{-3}\text{ m K}\).
+    </footer>
+  </main>
+</div>
+
+<a href="#" class="backtop" id="backtop" aria-label="Back to top">↑</a>
+
+<script>
+  // Scroll-spy for the sidebar
+  const links = document.querySelectorAll('.toc-list a');
+  const sections = Array.from(links).map(l => document.querySelector(l.getAttribute('href')));
+  function onScroll(){
+    let idx = 0;
+    const y = window.scrollY + 120;
+    sections.forEach((sec,i)=>{ if(sec && sec.offsetTop <= y) idx = i; });
+    links.forEach(l=>l.classList.remove('active'));
+    if(links[idx]) links[idx].classList.add('active');
+    document.getElementById('backtop').classList.toggle('show', window.scrollY > 600);
+  }
+  window.addEventListener('scroll', onScroll);
+  onScroll();
+  document.getElementById('backtop').addEventListener('click', e=>{ e.preventDefault(); window.scrollTo({top:0,behavior:'smooth'}); });
+</script>
+
+</body>
+</html>
