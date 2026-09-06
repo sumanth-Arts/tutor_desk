@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Body Balance — Unit 1 Notes | IB MYP Biology</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#0f172a;
+    --paper2:#0f172a;
+    --ink:#f8fafc;
+    --muted:#94a3b8;
+    --line:#334155;
+    --cold:#38bdf8;
+    --cold2:#0ea5e9;
+    --mid:#2dd4bf;
+    --warm:#facc15;
+    --hot:#f87171;
+    --panel:#1e293b;
+    --focus:#38bdf8;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',system-ui,sans-serif;
+    font-size:16px;
+    line-height:1.6;
+  }
+  a{color:inherit;}
+  ::selection{background:var(--warm); color:#0f172a;}
+  :focus-visible{outline:3px solid var(--focus); outline-offset:2px;}
+
+  h1,h2,h3,h4{font-family:'Fraunces',serif; font-weight:600; color:var(--ink); line-height:1.15; margin:0 0 .4em;}
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.72rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--muted);
+  }
+
+  .shell{
+    display:grid;
+    grid-template-columns:270px 1fr;
+    max-width:1280px;
+    margin:0 auto;
+  }
+  @media (max-width:900px){
+    .shell{grid-template-columns:1fr;}
+    nav.toc{position:static; height:auto; border-right:none; border-bottom:1px solid var(--line);}
+  }
+
+  nav.toc{
+    position:sticky;
+    top:0;
+    align-self:start;
+    height:100vh;
+    overflow-y:auto;
+    padding:28px 18px 40px 28px;
+    border-right:1px solid var(--line);
+    background:var(--paper);
+  }
+  .brand{
+    font-family:'Fraunces',serif;
+    font-weight:700;
+    font-size:1.05rem;
+    color:var(--ink);
+    margin-bottom:2px;
+  }
+  .brand small{
+    display:block;
+    font-family:'JetBrains Mono',monospace;
+    font-weight:400;
+    font-size:.68rem;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-top:4px;
+  }
+  .toc-list{
+    list-style:none;
+    margin:22px 0 0;
+    padding:0;
+    border-left:2px solid var(--line);
+  }
+  .toc-list li a{
+    display:flex;
+    gap:10px;
+    align-items:baseline;
+    text-decoration:none;
+    padding:7px 0 7px 14px;
+    margin-left:-2px;
+    border-left:2px solid transparent;
+    font-size:.86rem;
+    color:var(--muted);
+    transition:color .15s, border-color .15s;
+  }
+  .toc-list li a .n{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.72rem;
+    color:var(--warm);
+    flex:0 0 auto;
+  }
+  .toc-list li a:hover, .toc-list li a.active{
+    color:var(--ink);
+    border-left-color:var(--warm);
+  }
+  .toc-foot{
+    margin-top:28px;
+    padding-top:16px;
+    border-top:1px solid var(--line);
+    font-size:.76rem;
+    color:var(--muted);
+  }
+
+  main{padding:0 0 100px; background:var(--paper);}
+
+  .hero{
+    padding:56px 56px 40px;
+    border-bottom:1px solid var(--line);
+    position:relative;
+    overflow:hidden;
+  }
+  @media (max-width:640px){ .hero{padding:40px 22px 28px;} }
+  .hero h1{font-size:clamp(2.1rem, 4vw, 3rem);}
+  .hero .sub{max-width:640px; color:var(--muted); font-size:1.02rem;}
+  .hero .thermo{
+    margin-top:26px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .chip{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.72rem;
+    letter-spacing:.03em;
+    padding:5px 11px;
+    border-radius:999px;
+    border:1px solid var(--line);
+    color:var(--muted);
+    background:var(--paper2);
+  }
+
+  section.topic{
+    padding:48px 56px;
+    border-bottom:1px solid var(--line);
+    scroll-margin-top:14px;
+  }
+  @media (max-width:640px){ section.topic{padding:34px 22px;} }
+  section.topic:nth-of-type(even){background:var(--panel);}
+
+  .topic-head{
+    display:flex;
+    align-items:flex-end;
+    gap:16px;
+    margin-bottom:22px;
+  }
+  .topic-num{
+    font-family:'JetBrains Mono',monospace;
+    font-size:1.4rem;
+    color:var(--warm);
+    font-weight:600;
+  }
+  .topic h2{font-size:1.7rem;}
+
+  .card{
+    background:var(--paper2);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:20px 24px;
+    margin:18px 0;
+    color:var(--ink);
+  }
+  .card h4{font-size:.98rem; margin-bottom:.5em; color:var(--ink);}
+  .card.formula{ border-left:4px solid var(--cold2); }
+  .card.example{ border-left:4px solid var(--warm); }
+  .card.note{ border-left:4px solid var(--mid); background:#092024; }
+
+  ul.clean, ol.clean{margin:.4em 0; padding-left:1.25em;}
+  ul.clean li, ol.clean li{margin:.3em 0;}
+
+  table.dtab{
+    width:100%;
+    border-collapse:collapse;
+    margin:16px 0;
+    font-size:.92rem;
+  }
+  table.dtab th, table.dtab td{
+    border:1px solid var(--line);
+    padding:8px 12px;
+    text-align:left;
+    color:var(--ink);
+  }
+  table.dtab th{
+    background:var(--panel);
+    font-family:'JetBrains Mono',monospace;
+    font-size:.72rem;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+  }
+  section.topic:nth-of-type(even) table.dtab th{background:var(--paper2);}
+
+  code, .mono{font-family:'JetBrains Mono',monospace; font-size:.86em; color:var(--cold);}
+
+  .diagram-box{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:16px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:.82rem;
+    color:var(--mid);
+    white-space:pre-wrap;
+    overflow-x:auto;
+    margin:16px 0;
+  }
+
+  .practice{ margin-top:26px; padding-top:6px; }
+  .practice h3{
+    font-size:1.05rem;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .practice h3::before{
+    content:"";
+    width:18px; height:18px;
+    border-radius:4px;
+    background:linear-gradient(135deg,var(--cold2),var(--warm));
+    display:inline-block;
+  }
+  details.q{
+    background:var(--paper2);
+    border:1px solid var(--line);
+    border-radius:10px;
+    margin:12px 0;
+    padding:0;
+    overflow:hidden;
+    color:var(--ink);
+  }
+  details.q > summary{
+    list-style:none;
+    cursor:pointer;
+    padding:16px 20px;
+    display:flex;
+    gap:14px;
+    align-items:flex-start;
+    justify-content:space-between;
+  }
+  details.q > summary::-webkit-details-marker{display:none;}
+  .qtext{flex:1;}
+  .qmeta{ display:flex; gap:6px; flex-wrap:wrap; margin-top:8px; }
+  .tag{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.65rem;
+    letter-spacing:.04em;
+    padding:2px 7px;
+    border-radius:5px;
+    background:var(--panel);
+    color:var(--muted);
+    white-space:nowrap;
+  }
+  details.q[open] > summary{border-bottom:1px solid var(--line);}
+  .toggle-ico{
+    flex:0 0 auto;
+    width:26px; height:26px;
+    border-radius:50%;
+    border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'JetBrains Mono',monospace;
+    font-size:.9rem;
+    color:var(--warm);
+  }
+  details.q[open] .toggle-ico::before{content:"–";}
+  details.q:not([open]) .toggle-ico::before{content:"+";}
+  .answer{ padding:16px 20px 20px; background:#0b1329; font-size:.95rem; color:var(--ink); }
+  .answer .lbl{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.68rem;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    color:var(--warm);
+    margin-bottom:6px;
+    display:block;
+  }
+
+  footer{ padding:30px 56px 60px; color:var(--muted); font-size:.82rem; }
+  .backtop{
+    position:fixed; right:22px; bottom:22px; width:42px; height:42px;
+    border-radius:50%; background:var(--panel); color:var(--ink); border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center; text-decoration:none;
+    font-size:1.1rem; opacity:0; pointer-events:none; transition:opacity .2s; z-index:50;
+  }
+  .backtop.show{opacity:.9; pointer-events:auto;}
+</style>
+</head>
+<body>
+
+<div class="shell">
+  <nav class="toc" id="toc">
+    <div class="brand">Body Balance<small>Unit 1 · IB MYP Biology · Grade 9</small></div>
+    <ul class="toc-list" id="toc-list">
+      <li><a href="#homeostasis"><span class="n">01</span>Negative Feedback Loop</a></li>
+      <li><a href="#thermoregulation"><span class="n">02</span>Thermoregulation</a></li>
+      <li><a href="#glucose"><span class="n">03</span>Glucose Regulation</a></li>
+      <li><a href="#cardiovascular"><span class="n">04</span>Cardiovascular Role</a></li>
+      <li><a href="#osmoregulation"><span class="n">05</span>Osmoregulation</a></li>
+    </ul>
+    <div class="toc-foot">Notes compiled from the Grade 9 IB MYP Biology syllabus.</div>
+  </nav>
+
+  <main>
+    <div class="hero">
+      <p class="eyebrow">IB MYP Biology — Grade 9 · Unit 1</p>
+      <h1>Unit 1: Body Balance</h1>
+      <p class="sub">Homeostasis, negative feedback mechanisms, thermoregulation, blood glucose control, cardiovascular homeostasis, and osmoregulation.</p>
+      <div class="thermo">
+        <span class="chip">5 Core Topics</span>
+        <span class="chip">Loop Diagrams</span>
+        <span class="chip">Type 1 vs 2 Diabetes</span>
+        <span class="chip">Criterion Practice</span>
+      </div>
+    </div>
+
+    <!-- ================= 01 HOMEOSTASIS & NEGATIVE FEEDBACK ================= -->
+    <section class="topic" id="homeostasis">
+      <div class="topic-head"><span class="topic-num">01</span><h2>Negative Feedback Mechanism</h2></div>
+      
+      <div class="card formula">
+        <h4>Definitions</h4>
+        <ul class="clean">
+          <li><strong>Homeostasis:</strong> The maintenance of a relatively stable internal environment within narrow, physiological limits despite fluctuations in external conditions.</li>
+          <li><strong>Negative Feedback:</strong> A regulatory mechanism where a change in a physiological variable triggers a response that counteracts (reverses) the initial stimulus, bringing the system back towards its baseline set point.</li>
+        </ul>
+      </div>
+
+      <p>Key components of every negative feedback loop:</p>
+      <ul class="clean">
+        <li><strong>Stimulus:</strong> A change in the internal or external environment (e.g., temperature rise).</li>
+        <li><strong>Receptor (Sensor):</strong> Detects the change/stimulus and sends signals to the control center.</li>
+        <li><strong>Control Center:</strong> Processes information, compares it to the set point, and sends signals to effectors (e.g., Hypothalamus or Pancreas).</li>
+        <li><strong>Effector:</strong> An organ, gland, or muscle that executes a physiological response.</li>
+        <li><strong>Response:</strong> The action taken by effectors that counteracts the original stimulus to restore balance.</li>
+      </ul>
+
+      <div class="diagram-box">
+  [ STIMULUS ] ---> Detected by ---> [ RECEPTOR ]
+       ^                                  |
+       |                                Sends Signal
+       |                                  v
+  [ RESPONSE ] <--- Executes <--- [ CONTROL CENTER ]
+(System Restored)                    (Hypothalamus/Pancreas)
+      </div>
+    </section>
+
+    <!-- ================= 02 THERMOREGULATION ================= -->
+    <section class="topic" id="thermoregulation">
+      <div class="topic-head"><span class="topic-num">02</span><h2>Thermoregulation</h2></div>
+      
+      <p>Maintaining a constant core body temperature (approx. \(37^\circ\text{C}\)) is vital because enzymes require an optimal temperature to function efficiently. Extreme heat causes enzymes to <strong>denature</strong> (lose structural shape), while low temperatures drastically slow down metabolic reaction rates.</p>
+
+      <table class="dtab">
+        <tr><th>Effector / Mechanism</th><th>Response to High Temperature (Overheating)</th><th>Response to Low Temperature (Cooling Down)</th></tr>
+        <tr>
+          <td><strong>Arterioles in Skin</strong></td>
+          <td><strong>Vasodilation:</strong> Smooth muscles in arteriole walls relax, widening vessels near skin surface. Increases heat loss by radiation.</td>
+          <td><strong>Vasoconstriction:</strong> Smooth muscles contract, narrowing blood vessels near skin surface. Diverts warm blood to core organs.</td>
+        </tr>
+        <tr>
+          <td><strong>Sweat Glands</strong></td>
+          <td>Sweat production increases. As liquid sweat evaporates from skin, it absorbs thermal energy (evaporative cooling).</td>
+          <td>Sweat production drops to near zero to conserve thermal energy.</td>
+        </tr>
+        <tr>
+          <td><strong>Skeletal Muscles</strong></td>
+          <td>Relaxed (no shivering).</td>
+          <td><strong>Shivering:</strong> Rapid, involuntary muscle contractions increase cellular respiration rates, releasing heat energy.</td>
+        </tr>
+        <tr>
+          <td><strong>Hair Erector Muscles</strong></td>
+          <td>Relaxed, laying hair flat against skin so no insulating air boundary layer is trapped.</td>
+          <td><strong>Piloerection (Goosebumps):</strong> Muscles contract, pulling hairs upright to trap a layer of warm insulating air.</td>
+        </tr>
+      </table>
+    </section>
+
+    <!-- ================= 03 GLUCOSE REGULATION ================= -->
+    <section class="topic" id="glucose">
+      <div class="topic-head"><span class="topic-num">03</span><h2>Glucose Regulation &amp; Diabetes</h2></div>
+      
+      <p>The normal physiological range of blood glucose is roughly <strong>4.0 – 7.0 mmol/L</strong> (or \(70 - 110\text{ mg/dL}\)). Blood glucose levels are controlled by two antagonistic hormones produced by the islets of Langerhans in the <strong>pancreas</strong>.</p>
+
+      <div class="card note">
+        <h4>Hormonal Responses</h4>
+        <ul class="clean">
+          <li><strong>High Blood Glucose (Hyperglycemia):</strong> Pancreas releases <strong>Insulin</strong> from Beta cells. Stimulates liver and muscle cells to take up glucose and convert it into <strong>Glycogen</strong> for storage.</li>
+          <li><strong>Low Blood Glucose (Hypoglycemia):</strong> Pancreas releases <strong>Glucagon</strong> from Alpha cells. Stimulates liver cells to breakdown stored <strong>Glycogen</strong> into glucose and release it into the bloodstream.</li>
+        </ul>
+      </div>
+
+      <table class="dtab">
+        <tr><th>Feature</th><th>Type 1 Diabetes</th><th>Type 2 Diabetes</th></tr>
+        <tr><td><strong>Cause</strong></td><td>Autoimmune destruction of pancreatic Beta cells (cannot produce insulin).</td><td>Target body cells become resistant or unresponsive to insulin receptors.</td></tr>
+        <tr><td><strong>Onset Age</strong></td><td>Usually develops during childhood or early adolescence.</td><td>Typically develops in adults; linked to obesity, diet, and lifestyle factors.</td></tr>
+        <tr><td><strong>Treatment</strong></td><td>Daily external insulin injections / insulin pump therapy.</td><td>Dietary adjustments, physical exercise, oral medication, or insulin.</td></tr>
+      </table>
+    </section>
+
+    <!-- ================= 04 CARDIOVASCULAR ROLE ================= -->
+    <section class="topic" id="cardiovascular">
+      <div class="topic-head"><span class="topic-num">04</span><h2>Cardiovascular System in Homeostasis</h2></div>
+      
+      <ul class="clean">
+        <li><strong>Nutrient &amp; Gas Transport:</strong> Hemoglobin in red blood cells delivers oxygen from lungs to respiring tissues, while blood plasma transports dissolved nutrients (glucose, amino acids) and removes metabolic waste (\(\text{CO}_2\), urea).</li>
+        <li><strong>Temperature Regulation:</strong> Blood acts as a heat transport fluid, redistributing thermal energy from high-metabolism core organs (liver, heart) to skin capillaries for dissipation via vasodilation.</li>
+        <li><strong>pH Balance:</strong> Maintains blood plasma pH within the tight range of \(7.35 - 7.45\) using bicarbonate buffer systems (\(\text{HCO}_3^-\)) to neutralize metabolic acids like carbonic acid.</li>
+      </ul>
+    </section>
+
+    <!-- ================= 05 OSMOREGULATION ================= -->
+    <section class="topic" id="osmoregulation">
+      <div class="topic-head"><span class="topic-num">05</span><h2>Osmoregulation &amp; Water Balance</h2></div>
+      
+      <p>Water serves as a universal solvent for metabolic biochemical reactions, maintains cellular volume and turgidity, and facilitates transport within plasma.</p>
+
+      <div class="card formula">
+        <h4>Water Movement Principles</h4>
+        <ul class="clean">
+          <li><strong>Diffusion:</strong> Net movement of solute particles from high concentration to low concentration.</li>
+          <li><strong>Osmosis:</strong> Net movement of water molecules from a region of higher water potential (lower solute concentration) to lower water potential (higher solute concentration) across a partially permeable membrane.</li>
+        </ul>
+      </div>
+
+      <div class="card example">
+        <h4>Role of Kidneys &amp; ADH (Antidiuretic Hormone)</h4>
+        <p>When body fluid concentration rises (dehydration), osmoreceptors in the <strong>hypothalamus</strong> detect the change and signal the <strong>pituitary gland</strong> to secrete <strong>ADH</strong> into the bloodstream.</p>
+        <ul class="clean">
+          <li><strong>High ADH Levels:</strong> Collecting ducts in kidneys become <em>more permeable</em> to water. More water is reabsorbed back into blood capillaries \(\rightarrow\) small volume of concentrated, dark urine produced.</li>
+          <li><strong>Low ADH Levels:</strong> Collecting ducts become <em>less permeable</em> to water. Less water is reabsorbed \(\rightarrow\) large volume of dilute, clear urine produced.</li>
+        </ul>
+      </div>
+
+      <div class="practice">
+        <h3>Practice questions</h3>
+
+        <details class="q">
+          <summary>
+            <div class="qtext">1. <strong>Explain</strong> how vasodilation and sweating work together to decrease body temperature during intense physical exercise.
+              <div class="qmeta"><span class="tag">Cr: A, ii</span><span class="tag">L 5–6</span></div>
+            </div>
+            <span class="toggle-ico"></span>
+          </summary>
+          <div class="answer">
+            <span class="lbl">Model answer</span>
+            During exercise, cellular respiration increases, generating excess heat. The hypothalamus triggers vasodilation, causing smooth muscles in skin arterioles to relax. This increases blood flow to surface capillaries so heat dissipates by radiation. Simultaneously, sweat glands produce sweat; as water evaporates off the skin, it absorbs thermal energy from the blood, causing evaporative cooling.
+          </div>
+        </details>
+
+        <details class="q">
+          <summary>
+            <div class="qtext">2. <strong>Compare and contrast</strong> the causes and treatment strategies for Type 1 and Type 2 diabetes.
+              <div class="qmeta"><span class="tag">Cr: A, ii</span><span class="tag">L 5–6</span></div>
+            </div>
+            <span class="toggle-ico"></span>
+          </summary>
+          <div class="answer">
+            <span class="lbl">Model answer</span>
+            <strong>Comparison:</strong> Both conditions cause abnormally high blood glucose levels (hyperglycemia) due to impaired insulin action.<br>
+            <strong>Differences:</strong> Type 1 is an autoimmune disease where the pancreas stops producing insulin, requiring lifelong daily insulin injections. Type 2 is characterized by insulin resistance in target cell receptors, often linked to lifestyle factors, and managed primarily through diet, exercise, or oral medication.
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <footer>
+      Unit 1: Body Balance — Compiled from the Grade 9 IB MYP Biology syllabus.
+    </footer>
+  </main>
+</div>
+
+<a href="#" class="backtop" id="backtop" aria-label="Back to top">↑</a>
+
+<script>
+  const links = document.querySelectorAll('.toc-list a');
+  const sections = Array.from(links).map(l => document.querySelector(l.getAttribute('href')));
+  function onScroll(){
+    let idx = 0;
+    const y = window.scrollY + 120;
+    sections.forEach((sec,i)=>{ if(sec && sec.offsetTop <= y) idx = i; });
+    links.forEach(l=>l.classList.remove('active'));
+    if(links[idx]) links[idx].classList.add('active');
+    document.getElementById('backtop').classList.toggle('show', window.scrollY > 600);
+  }
+  window.addEventListener('scroll', onScroll);
+  onScroll();
+  document.getElementById('backtop').addEventListener('click', e=>{ e.preventDefault(); window.scrollTo({top:0,behavior:'smooth'}); });
+</script>
+
+</body>
+</html>
