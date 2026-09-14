@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Midterm Mathematics — Revision Notes | IB MYP Grade 9</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] },
+  svg: { fontCache: 'global' }
+};
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+<style>
+  :root{
+    --paper:#0f172a;
+    --paper2:#0f172a;
+    --ink:#f8fafc;
+    --muted:#94a3b8;
+    --line:#334155;
+    --cold:#38bdf8;
+    --cold2:#0ea5e9;
+    --mid:#2dd4bf;
+    --warm:#facc15;
+    --hot:#f87171;
+    --panel:#1e293b;
+    --focus:#38bdf8;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',system-ui,sans-serif;
+    font-size:16px;
+    line-height:1.6;
+  }
+  a{color:inherit;}
+  ::selection{background:var(--warm); color:#0f172a;}
+  :focus-visible{outline:3px solid var(--focus); outline-offset:2px;}
+
+  h1,h2,h3,h4{font-family:'Fraunces',serif; font-weight:600; color:var(--ink); line-height:1.15; margin:0 0 .4em;}
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.72rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--muted);
+  }
+
+  .shell{
+    display:grid;
+    grid-template-columns:270px 1fr;
+    max-width:1280px;
+    margin:0 auto;
+  }
+  @media (max-width:900px){
+    .shell{grid-template-columns:1fr;}
+    nav.toc{position:static; height:auto; border-right:none; border-bottom:1px solid var(--line);}
+  }
+
+  nav.toc{
+    position:sticky;
+    top:0;
+    align-self:start;
+    height:100vh;
+    overflow-y:auto;
+    padding:28px 18px 40px 28px;
+    border-right:1px solid var(--line);
+    background:var(--paper);
+  }
+  .brand{
+    font-family:'Fraunces',serif;
+    font-weight:700;
+    font-size:1.05rem;
+    color:var(--ink);
+    margin-bottom:2px;
+  }
+  .brand small{
+    display:block;
+    font-family:'JetBrains Mono',monospace;
+    font-weight:400;
+    font-size:.68rem;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-top:4px;
+  }
+  .toc-list{
+    list-style:none;
+    margin:22px 0 0;
+    padding:0;
+    border-left:2px solid var(--line);
+  }
+  .toc-list li a{
+    display:flex;
+    gap:10px;
+    align-items:baseline;
+    text-decoration:none;
+    padding:7px 0 7px 14px;
+    margin-left:-2px;
+    border-left:2px solid transparent;
+    font-size:.86rem;
+    color:var(--muted);
+    transition:color .15s, border-color .15s;
+  }
+  .toc-list li a .n{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.72rem;
+    color:var(--warm);
+    flex:0 0 auto;
+  }
+  .toc-list li a:hover, .toc-list li a.active{
+    color:var(--ink);
+    border-left-color:var(--warm);
+  }
+  .toc-foot{
+    margin-top:28px;
+    padding-top:16px;
+    border-top:1px solid var(--line);
+    font-size:.76rem;
+    color:var(--muted);
+  }
+
+  main{padding:0 0 100px; background:var(--paper);}
+
+  .hero{
+    padding:56px 56px 40px;
+    border-bottom:1px solid var(--line);
+    position:relative;
+    overflow:hidden;
+  }
+  @media (max-width:640px){ .hero{padding:40px 22px 28px;} }
+  .hero h1{font-size:clamp(2.1rem, 4vw, 3rem);}
+  .hero .sub{max-width:640px; color:var(--muted); font-size:1.02rem;}
+  .hero .thermo{
+    margin-top:26px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .chip{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.72rem;
+    letter-spacing:.03em;
+    padding:5px 11px;
+    border-radius:999px;
+    border:1px solid var(--line);
+    color:var(--warm);
+    background:var(--paper2);
+  }
+
+  section.topic{
+    padding:48px 56px;
+    border-bottom:1px solid var(--line);
+    scroll-margin-top:14px;
+  }
+  @media (max-width:640px){ section.topic{padding:34px 22px;} }
+  section.topic:nth-of-type(even){background:var(--panel);}
+
+  .topic-head{
+    display:flex;
+    align-items:flex-end;
+    gap:16px;
+    margin-bottom:22px;
+  }
+  .topic-num{
+    font-family:'JetBrains Mono',monospace;
+    font-size:1.4rem;
+    color:var(--cold);
+    font-weight:600;
+  }
+  .topic h2{font-size:1.7rem;}
+
+  .card{
+    background:var(--paper2);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:20px 24px;
+    margin:18px 0;
+    color:var(--ink);
+  }
+  .card h4{font-size:.98rem; margin-bottom:.5em; color:var(--ink);}
+  .card.formula{ border-left:4px solid var(--cold2); }
+  .card.example{ border-left:4px solid var(--warm); }
+  .card.note{ border-left:4px solid var(--mid); background:#092024; }
+
+  ul.clean, ol.clean{margin:.4em 0; padding-left:1.25em;}
+  ul.clean li, ol.clean li{margin:.3em 0;}
+
+  table.dtab{
+    width:100%;
+    border-collapse:collapse;
+    margin:16px 0;
+    font-size:.92rem;
+  }
+  table.dtab th, table.dtab td{
+    border:1px solid var(--line);
+    padding:8px 12px;
+    text-align:left;
+    color:var(--ink);
+  }
+  table.dtab th{
+    background:var(--panel);
+    font-family:'JetBrains Mono',monospace;
+    font-size:.72rem;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+  }
+  section.topic:nth-of-type(even) table.dtab th{background:var(--paper2);}
+
+  code, .mono{font-family:'JetBrains Mono',monospace; font-size:.86em; color:var(--cold);}
+
+  .practice{ margin-top:26px; padding-top:6px; }
+  .practice h3{
+    font-size:1.05rem;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .practice h3::before{
+    content:"";
+    width:18px; height:18px;
+    border-radius:4px;
+    background:linear-gradient(135deg,var(--cold2),var(--warm));
+    display:inline-block;
+  }
+  details.q{
+    background:var(--paper2);
+    border:1px solid var(--line);
+    border-radius:10px;
+    margin:12px 0;
+    padding:0;
+    overflow:hidden;
+    color:var(--ink);
+  }
+  details.q > summary{
+    list-style:none;
+    cursor:pointer;
+    padding:16px 20px;
+    display:flex;
+    gap:14px;
+    align-items:flex-start;
+    justify-content:space-between;
+  }
+  details.q > summary::-webkit-details-marker{display:none;}
+  .qtext{flex:1;}
+  .qmeta{ display:flex; gap:6px; flex-wrap:wrap; margin-top:8px; }
+  .tag{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.65rem;
+    letter-spacing:.04em;
+    padding:2px 7px;
+    border-radius:5px;
+    background:var(--panel);
+    color:var(--muted);
+    white-space:nowrap;
+  }
+  details.q[open] > summary{border-bottom:1px solid var(--line);}
+  .toggle-ico{
+    flex:0 0 auto;
+    width:26px; height:26px;
+    border-radius:50%;
+    border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'JetBrains Mono',monospace;
+    font-size:.9rem;
+    color:var(--warm);
+  }
+  details.q[open] .toggle-ico::before{content:"–";}
+  details.q:not([open]) .toggle-ico::before{content:"+";}
+  .answer{ padding:16px 20px 20px; background:#0b1329; font-size:.95rem; color:var(--ink); }
+  .answer .lbl{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.68rem;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    color:var(--warm);
+    margin-bottom:6px;
+    display:block;
+  }
+
+  footer{ padding:30px 56px 60px; color:var(--muted); font-size:.82rem; }
+  .backtop{
+    position:fixed; right:22px; bottom:22px; width:42px; height:42px;
+    border-radius:50%; background:var(--panel); color:var(--ink); border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center; text-decoration:none;
+    font-size:1.1rem; opacity:0; pointer-events:none; transition:opacity .2s; z-index:50;
+  }
+  .backtop.show{opacity:.9; pointer-events:auto;}
+</style>
+</head>
+<body>
+
+<div class="shell">
+  <nav class="toc" id="toc">
+    <div class="brand">Midterm Math<small>Test 1 Revision · Grade 9</small></div>
+    <ul class="toc-list" id="toc-list">
+      <li><a href="#numbers"><span class="n">01</span>Number Systems &amp; Surds</a></li>
+      <li><a href="#algebra"><span class="n">02</span>Algebraic Foundations</a></li>
+      <li><a href="#exponents"><span class="n">03</span>Exponents &amp; Logarithms</a></li>
+      <li><a href="#sequences"><span class="n">04</span>Sequences &amp; Patterns</a></li>
+      <li><a href="#polynomials"><span class="n">05</span>Polynomials &amp; Quadratics</a></li>
+      <li><a href="#equations"><span class="n">06</span>Simultaneous Equations</a></li>
+    </ul>
+    <div class="toc-foot">Structured for the 1-hour, 40-mark midterm assessment (Criteria A, B, C).</div>
+  </nav>
+
+  <main>
+    <div class="hero">
+      <p class="eyebrow">IB MYP Mathematics — Grade 9 · Mid Term Test-1</p>
+      <h1>Numerical &amp; Abstract Reasoning Hub</h1>
+      <p class="sub">Complete revision material covering number systems, sequences, polynomials, Vieta's theorem, logarithms, and simultaneous equations.</p>
+      <div class="thermo">
+        <span class="chip">1 Hour Exam</span>
+        <span class="chip">40 Marks Total</span>
+        <span class="chip">Criterion A (15m)</span>
+        <span class="chip">Criterion B (15m)</span>
+        <span class="chip">Criterion C (10m)</span>
+      </div>
+    </div>
+
+    <!-- ================= 01 NUMBER SYSTEMS ================= -->
+    <section class="topic" id="numbers">
+      <div class="topic-head"><span class="topic-num">01</span><h2>Number Systems, Surds &amp; Values</h2></div>
+      
+      <p>Understanding the foundations of numerical reasoning, including rational/irrational numbers, surds, and estimation.</p>
+
+      <div class="card formula">
+        <h4>Key Definitions</h4>
+        <ul class="clean">
+          <li><strong>Rational Numbers:</strong> Can be written as a fraction \(\frac{p}{q}\) where \(p, q\) are integers and \(q \neq 0\). Includes integers, terminating decimals, and recurring decimals.</li>
+          <li><strong>Irrational Numbers:</strong> Cannot be written as a simple fraction (e.g., \(\pi\), \(\sqrt{2}\)). Their decimal expansions are non-terminating and non-recurring.</li>
+          <li><strong>Absolute Values:</strong> The distance of a number from zero on the number line. \(|x| = x\) if \(x \geq 0\), and \(|x| = -x\) if \(x < 0\).</li>
+        </ul>
+      </div>
+
+      <div class="card note">
+        <h4>Surds &amp; Recurring Decimals</h4>
+        <p>To convert a recurring decimal (like \(0.777...\)) to a rational fraction, set \(x = 0.777...\), multiply by a power of 10 to shift the decimal (\(10x = 7.777...\)), and subtract to solve for \(x = \frac{7}{9}\). Surds are irrational roots (e.g., \(\sqrt{3}\)) that must often be rationalized in denominators.</p>
+      </div>
+      
+      <div class="card example">
+        <h4>Estimation, Approximation &amp; Scientific Notation</h4>
+        <p>Scientific notation writes numbers as \(A \times 10^n\) where \(1 \leq A < 10\). Estimation requires rounding values to an appropriate number of <strong>Significant Figures</strong> before calculating.</p>
+      </div>
+    </section>
+
+    <!-- ================= 02 ALGEBRAIC FOUNDATIONS ================= -->
+    <section class="topic" id="algebra">
+      <div class="topic-head"><span class="topic-num">02</span><h2>Algebraic Foundations</h2></div>
+
+      <p>Core algebraic manipulation skills required for problem-solving.</p>
+
+      <ul class="clean">
+        <li><strong>Changing the subject of the formula:</strong> Isolating a specific variable using inverse operations.</li>
+        <li><strong>Simple and compound Inequality:</strong> Solving inequalities like \(3x - 2 < 10\) or compound inequalities like \(-5 \leq 2x + 1 < 9\) and graphing them on a number line.</li>
+        <li><strong>Ratio, Proportion &amp; Percentages:</strong> Calculating percentage change, mapping equivalent ratios, and applying <strong>Direct proportion</strong> (\(y = kx\)) and <strong>Inverse proportion</strong> (\(y = \frac{k}{x}\)).</li>
+      </ul>
+    </section>
+
+    <!-- ================= 03 EXPONENTS & LOGS ================= -->
+    <section class="topic" id="exponents">
+      <div class="topic-head"><span class="topic-num">03</span><h2>Exponents &amp; Logarithms</h2></div>
+
+      <div class="card formula">
+        <h4>Laws of Exponents</h4>
+        \[ a^m \times a^n = a^{m+n} \quad | \quad \frac{a^m}{a^n} = a^{m-n} \quad | \quad (a^m)^n = a^{mn} \quad | \quad a^{-n} = \frac{1}{a^n} \]
+        <p>These laws are used to solve <strong>exponential equations</strong>, often by finding a common base (e.g., \(2^x = 8 \Rightarrow 2^x = 2^3 \Rightarrow x = 3\)).</p>
+      </div>
+
+      <div class="card formula">
+        <h4>Logarithms</h4>
+        <p>Logarithms are the inverse of exponents. If \(a^b = c\), then \(\log_a(c) = b\).</p>
+      </div>
+    </section>
+
+    <!-- ================= 04 SEQUENCES ================= -->
+    <section class="topic" id="sequences">
+      <div class="topic-head"><span class="topic-num">04</span><h2>Sequences &amp; Patterns</h2></div>
+      <p>Investigating patterns and applying formulas to different series structures.</p>
+
+      <table class="dtab">
+        <tr><th>Sequence Type</th><th>Definition</th><th>nth Term Formula</th></tr>
+        <tr><td><strong>Arithmetic (AP)</strong></td><td>Constant difference (\(d\)) between consecutive terms.</td><td>\(U_n = a + (n-1)d\)</td></tr>
+        <tr><td><strong>Geometric (GP)</strong></td><td>Constant ratio (\(r\)) between consecutive terms.</td><td>\(U_n = a \cdot r^{n-1}\)</td></tr>
+        <tr><td><strong>Quadratic</strong></td><td>The <em>second</em> differences between terms are constant.</td><td>\(U_n = an^2 + bn + c\)</td></tr>
+        <tr><td><strong>Fibonacci &amp; Recursive</strong></td><td>Each term is defined by preceding terms.</td><td>e.g., \(U_n = U_{n-1} + U_{n-2}\)</td></tr>
+      </table>
+      
+      <p>You must also be prepared to solve <strong>word problems on AP and GP</strong>.</p>
+    </section>
+
+    <!-- ================= 05 POLYNOMIALS ================= -->
+    <section class="topic" id="polynomials">
+      <div class="topic-head"><span class="topic-num">05</span><h2>Polynomials &amp; Quadratics</h2></div>
+
+      <div class="card formula">
+        <h4>Factor &amp; Remainder Theorems</h4>
+        <ul class="clean">
+          <li><strong>Remainder Theorem:</strong> If a polynomial \(P(x)\) is divided by \((x - a)\), the remainder is \(P(a)\).</li>
+          <li><strong>Factor Theorem:</strong> If \(P(a) = 0\), then \((x - a)\) is a factor of the polynomial. This establishes the <strong>idea of zeroes and its role in factorisation</strong>.</li>
+          <li><strong>Rational Root Theorem &amp; Fundamental Thm of Algebra:</strong> Helps identify potential rational roots and confirms an \(n\)-degree polynomial has exactly \(n\) roots (complex or real).</li>
+        </ul>
+      </div>
+
+      <div class="card formula">
+        <h4>Nature of Roots in Quadratic Equations</h4>
+        <p>For \(ax^2 + bx + c = 0\), the discriminant \(\Delta = b^2 - 4ac\) determines root nature:</p>
+        <ul class="clean">
+          <li>\(\Delta > 0\): Two distinct real roots</li>
+          <li>\(\Delta = 0\): One repeated real root</li>
+          <li>\(\Delta < 0\): No real roots (complex roots)</li>
+        </ul>
+      </div>
+
+      <div class="card formula">
+        <h4>Vieta's Theorem</h4>
+        <p>Defines the relationship between roots (\(\alpha, \beta\)) and coefficients of \(ax^2 + bx + c = 0\):</p>
+        \[ \text{Sum of roots: } \alpha + \beta = -\frac{b}{a} \quad | \quad \text{Product of roots: } \alpha\beta = \frac{c}{a} \]
+      </div>
+      <p>Applying these concepts helps in <strong>forming and solving complex equations in word problems of Polynomials degree two</strong>.</p>
+    </section>
+
+    <!-- ================= 06 EQUATIONS ================= -->
+    <section class="topic" id="equations">
+      <div class="topic-head"><span class="topic-num">06</span><h2>Graphical Representation &amp; Simultaneous Equations</h2></div>
+      
+      <p>Understanding the <strong>graphical representation of Linear, Quadratic and Simultaneous Equations</strong>.</p>
+
+      <div class="card note">
+        <h4>Conditions of Solvability of Simultaneous Equations</h4>
+        <p>For a system of linear equations \(a_1x + b_1y = c_1\) and \(a_2x + b_2y = c_2\):</p>
+        <ul class="clean">
+          <li><strong>Unique Solution (Intersecting lines):</strong> \(\frac{a_1}{a_2} \neq \frac{b_1}{b_2}\)</li>
+          <li><strong>No Solution (Parallel lines):</strong> \(\frac{a_1}{a_2} = \frac{b_1}{b_2} \neq \frac{c_1}{c_2}\)</li>
+          <li><strong>Infinite Solutions (Coincident lines):</strong> \(\frac{a_1}{a_2} = \frac{b_1}{b_2} = \frac{c_1}{c_2}\)</li>
+        </ul>
+      </div>
+
+      <div class="practice">
+        <h3>Midterm Practice Examples</h3>
+
+        <details class="q">
+          <summary>
+            <div class="qtext">1. A polynomial \(P(x) = 2x^3 - kx^2 + 5x - 6\) leaves a remainder of 4 when divided by \((x - 2)\). <strong>Find</strong> the value of \(k\).
+              <div class="qmeta"><span class="tag">Cr: A</span></div>
+            </div>
+            <span class="toggle-ico"></span>
+          </summary>
+          <div class="answer">
+            <span class="lbl">Model answer</span>
+            Using the Remainder Theorem, \(P(2) = 4\).<br>
+            \(P(2) = 2(2)^3 - k(2)^2 + 5(2) - 6 = 4\)<br>
+            \(16 - 4k + 10 - 6 = 4\)<br>
+            \(20 - 4k = 4 \Rightarrow 4k = 16 \Rightarrow k = 4\).
+          </div>
+        </details>
+
+        <details class="q">
+          <summary>
+            <div class="qtext">2. The roots of the quadratic equation \(3x^2 - 7x + 2 = 0\) are \(\alpha\) and \(\beta\). <strong>Calculate</strong> the value of \(\frac{1}{\alpha} + \frac{1}{\beta}\).
+              <div class="qmeta"><span class="tag">Cr: A</span></div>
+            </div>
+            <span class="toggle-ico"></span>
+          </summary>
+          <div class="answer">
+            <span class="lbl">Model answer</span>
+            Using Vieta's Theorem, Sum of roots \(\alpha + \beta = -\frac{-7}{3} = \frac{7}{3}\).<br>
+            Product of roots \(\alpha\beta = \frac{2}{3}\).<br>
+            We need \(\frac{1}{\alpha} + \frac{1}{\beta} = \frac{\alpha + \beta}{\alpha\beta}\).<br>
+            Substitute the values: \(\frac{7/3}{2/3} = \frac{7}{2}\).
+          </div>
+        </details>
+
+        <details class="q">
+          <summary>
+            <div class="qtext">3. <strong>Investigate</strong> the pattern for the sequence 3, 8, 15, 24, 35... and <strong>determine</strong> its \(n\)th term formula.
+              <div class="qmeta"><span class="tag">Cr: B</span></div>
+            </div>
+            <span class="toggle-ico"></span>
+          </summary>
+          <div class="answer">
+            <span class="lbl">Model answer</span>
+            Find the first differences: \(8-3 = 5\); \(15-8 = 7\); \(24-15 = 9\); \(35-24 = 11\).<br>
+            Find the second differences: \(7-5 = 2\); \(9-7 = 2\); \(11-9 = 2\).<br>
+            Since the second difference is constant, it is a quadratic sequence of the form \(an^2 + bn + c\).<br>
+            \(2a = 2 \Rightarrow a = 1\).<br>
+            \(3a + b = 5 \Rightarrow 3(1) + b = 5 \Rightarrow b = 2\).<br>
+            \(a + b + c = 3 \Rightarrow 1 + 2 + c = 3 \Rightarrow c = 0\).<br>
+            The formula is \(U_n = n^2 + 2n\).
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <footer>
+      Grade 9 Mid Term Test-1 Revision — Built based on the official Indus syllabus.
+    </footer>
+  </main>
+</div>
+
+<a href="#" class="backtop" id="backtop" aria-label="Back to top">↑</a>
+
+<script>
+  const links = document.querySelectorAll('.toc-list a');
+  const sections = Array.from(links).map(l => document.querySelector(l.getAttribute('href')));
+  function onScroll(){
+    let idx = 0;
+    const y = window.scrollY + 120;
+    sections.forEach((sec,i)=>{ if(sec && sec.offsetTop <= y) idx = i; });
+    links.forEach(l=>l.classList.remove('active'));
+    if(links[idx]) links[idx].classList.add('active');
+    document.getElementById('backtop').classList.toggle('show', window.scrollY > 600);
+  }
+  window.addEventListener('scroll', onScroll);
+  onScroll();
+  document.getElementById('backtop').addEventListener('click', e=>{ e.preventDefault(); window.scrollTo({top:0,behavior:'smooth'}); });
+</script>
+
+</body>
+</html>
