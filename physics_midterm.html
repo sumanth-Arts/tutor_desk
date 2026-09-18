@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Midterm Exam Prep: Motion, Forces & Newton's Laws | IB MYP Physics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] },
+  svg: { fontCache: 'global' }
+};
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+<style>
+  :root{
+    --paper:#0f172a;
+    --paper2:#0f172a;
+    --ink:#f8fafc;
+    --muted:#94a3b8;
+    --line:#334155;
+    --cold:#38bdf8;
+    --cold2:#0ea5e9;
+    --mid:#2dd4bf;
+    --warm:#facc15;
+    --hot:#f87171;
+    --panel:#1e293b;
+    --code:#1e293b;
+    --focus:#38bdf8;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',system-ui,sans-serif;
+    font-size:16px;
+    line-height:1.6;
+  }
+  a{color:inherit;}
+  ::selection{background:var(--warm); color:#0f172a;}
+  :focus-visible{outline:3px solid var(--focus); outline-offset:2px;}
+
+  h1,h2,h3,h4{font-family:'Fraunces',serif; font-weight:600; color:var(--ink); line-height:1.15; margin:0 0 .4em;}
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.72rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--muted);
+  }
+
+  .shell{
+    display:grid;
+    grid-template-columns:270px 1fr;
+    max-width:1280px;
+    margin:0 auto;
+  }
+  @media (max-width:900px){
+    .shell{grid-template-columns:1fr;}
+    nav.toc{position:static; height:auto; border-right:none; border-bottom:1px solid var(--line);}
+  }
+
+  nav.toc{
+    position:sticky;
+    top:0;
+    align-self:start;
+    height:100vh;
+    overflow-y:auto;
+    padding:28px 18px 40px 28px;
+    border-right:1px solid var(--line);
+    background:var(--paper);
+  }
+  .brand{
+    font-family:'Fraunces',serif;
+    font-weight:700;
+    font-size:1.05rem;
+    color:var(--ink);
+    margin-bottom:2px;
+  }
+  .brand small{
+    display:block;
+    font-family:'JetBrains Mono',monospace;
+    font-weight:400;
+    font-size:.68rem;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-top:4px;
+  }
+  .toc-list{
+    list-style:none;
+    margin:22px 0 0;
+    padding:0;
+    border-left:2px solid var(--line);
+  }
+  .toc-list li a{
+    display:flex;
+    gap:10px;
+    align-items:baseline;
+    text-decoration:none;
+    padding:7px 0 7px 14px;
+    margin-left:-2px;
+    border-left:2px solid transparent;
+    font-size:.86rem;
+    color:var(--muted);
+    transition:color .15s, border-color .15s;
+  }
+  .toc-list li a .n{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.72rem;
+    color:var(--warm);
+    flex:0 0 auto;
+  }
+  .toc-list li a:hover, .toc-list li a.active{
+    color:var(--ink);
+    border-left-color:var(--warm);
+  }
+  .toc-foot{
+    margin-top:28px;
+    padding-top:16px;
+    border-top:1px solid var(--line);
+    font-size:.76rem;
+    color:var(--muted);
+  }
+
+  main{padding:0 0 100px; background:var(--paper);}
+
+  .hero{
+    padding:56px 56px 40px;
+    border-bottom:1px solid var(--line);
+    position:relative;
+    overflow:hidden;
+  }
+  @media (max-width:640px){ .hero{padding:40px 22px 28px;} }
+  .hero h1{font-size:clamp(2.1rem, 4vw, 3rem);}
+  .hero .sub{max-width:640px; color:var(--muted); font-size:1.02rem;}
+  .hero .thermo{
+    margin-top:26px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .chip{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.72rem;
+    letter-spacing:.03em;
+    padding:5px 11px;
+    border-radius:999px;
+    border:1px solid var(--line);
+    color:var(--muted);
+    background:var(--paper2);
+  }
+
+  section.topic{
+    padding:48px 56px;
+    border-bottom:1px solid var(--line);
+    scroll-margin-top:14px;
+  }
+  @media (max-width:640px){ section.topic{padding:34px 22px;} }
+  section.topic:nth-of-type(even){background:var(--panel);}
+
+  .topic-head{
+    display:flex;
+    align-items:flex-end;
+    gap:16px;
+    margin-bottom:22px;
+  }
+  .topic-num{
+    font-family:'JetBrains Mono',monospace;
+    font-size:1.4rem;
+    color:var(--warm);
+    font-weight:600;
+  }
+  .topic h2{font-size:1.7rem;}
+
+  .card{
+    background:var(--paper2);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:20px 24px;
+    margin:18px 0;
+    color:var(--ink);
+  }
+  .card h4{font-size:.98rem; margin-bottom:.5em; color:var(--ink);}
+  .card.formula{ border-left:4px solid var(--cold2); }
+  .card.example{ border-left:4px solid var(--warm); }
+  .card.note{ border-left:4px solid var(--mid); background:#092024; }
+
+  ul.clean, ol.clean{margin:.4em 0; padding-left:1.25em;}
+  ul.clean li, ol.clean li{margin:.3em 0;}
+
+  table.dtab{
+    width:100%;
+    border-collapse:collapse;
+    margin:16px 0;
+    font-size:.92rem;
+  }
+  table.dtab th, table.dtab td{
+    border:1px solid var(--line);
+    padding:8px 12px;
+    text-align:left;
+    color:var(--ink);
+  }
+  table.dtab th{
+    background:var(--panel);
+    font-family:'JetBrains Mono',monospace;
+    font-size:.72rem;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+  }
+  section.topic:nth-of-type(even) table.dtab th{background:var(--paper2);}
+
+  code, .mono{font-family:'JetBrains Mono',monospace; font-size:.86em; color:var(--cold);}
+
+  .practice{ margin-top:26px; padding-top:6px; }
+  .practice h3{
+    font-size:1.05rem;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .practice h3::before{
+    content:"";
+    width:18px; height:18px;
+    border-radius:4px;
+    background:linear-gradient(135deg,var(--cold2),var(--warm));
+    display:inline-block;
+  }
+  details.q{
+    background:var(--paper2);
+    border:1px solid var(--line);
+    border-radius:10px;
+    margin:12px 0;
+    padding:0;
+    overflow:hidden;
+    color:var(--ink);
+  }
+  details.q > summary{
+    list-style:none;
+    cursor:pointer;
+    padding:16px 20px;
+    display:flex;
+    gap:14px;
+    align-items:flex-start;
+    justify-content:space-between;
+  }
+  details.q > summary::-webkit-details-marker{display:none;}
+  .qtext{flex:1;}
+  .qmeta{ display:flex; gap:6px; flex-wrap:wrap; margin-top:8px; }
+  .tag{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.65rem;
+    letter-spacing:.04em;
+    padding:2px 7px;
+    border-radius:5px;
+    background:var(--panel);
+    color:var(--muted);
+    white-space:nowrap;
+  }
+  details.q[open] > summary{border-bottom:1px solid var(--line);}
+  .toggle-ico{
+    flex:0 0 auto;
+    width:26px; height:26px;
+    border-radius:50%;
+    border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'JetBrains Mono',monospace;
+    font-size:.9rem;
+    color:var(--warm);
+  }
+  details.q[open] .toggle-ico::before{content:"–";}
+  details.q:not([open]) .toggle-ico::before{content:"+";}
+  .answer{ padding:16px 20px 20px; background:#0b1329; font-size:.95rem; color:var(--ink); }
+  .answer .lbl{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.68rem;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    color:var(--warm);
+    margin-bottom:6px;
+    display:block;
+  }
+
+  footer{ padding:30px 56px 60px; color:var(--muted); font-size:.82rem; }
+  .backtop{
+    position:fixed; right:22px; bottom:22px; width:42px; height:42px;
+    border-radius:50%; background:var(--panel); color:var(--ink); border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center; text-decoration:none;
+    font-size:1.1rem; opacity:0; pointer-events:none; transition:opacity .2s; z-index:50;
+  }
+  .backtop.show{opacity:.9; pointer-events:auto;}
+</style>
+</head>
+<body>
+
+<div class="shell">
+  <nav class="toc" id="toc">
+    <div class="brand">NotesVault<small>Midterm Exam Prep</small></div>
+    <ul class="toc-list" id="toc-list">
+      <li><a href="#units"><span class="n">01</span>SI Units &amp; Dimensions</a></li>
+      <li><a href="#recap"><span class="n">02</span>Motion Quantities</a></li>
+      <li><a href="#dtgraph"><span class="n">03</span>D–T Graphs</a></li>
+      <li><a href="#vtgraph"><span class="n">04</span>V–T Graphs</a></li>
+      <li><a href="#instavg"><span class="n">05</span>Instant vs. Average Velocity</a></li>
+      <li><a href="#suvat"><span class="n">06</span>Equations of Motion</a></li>
+      <li><a href="#freebody"><span class="n">07</span>Forces &amp; Free-Body</a></li>
+      <li><a href="#firstlaw"><span class="n">08</span>First Law &amp; Inertia</a></li>
+      <li><a href="#secondlaw"><span class="n">09</span>Second Law &amp; Momentum</a></li>
+      <li><a href="#impulse"><span class="n">10</span>Impulse &amp; Applications</a></li>
+    </ul>
+    <div class="toc-foot">Built directly from the teacher's midterm topic list (1.1 Motion, 1.2 Forces &amp; Newton's Laws).</div>
+  </nav>
+
+  <main>
+    <div class="hero">
+      <p class="eyebrow">IB MYP Physics — Grade 9 · Midterm Exam Prep</p>
+      <h1>Motion, Forces &amp; Newton's Laws</h1>
+      <p class="sub">Covers 1.1 Motion and 1.2 Types of Forces and Newton's Laws in full: SI units and dimensional analysis, motion graphs, instantaneous vs. average velocity, the equations of motion, free-body diagrams and resultant force, Newton's Laws, momentum, and impulse.</p>
+      <div class="thermo">
+        <span class="chip">Criteria A, B, C, D</span>
+        <span class="chip">40 marks total</span>
+        <span class="chip">Cr A 10 · Cr B 10 · Cr C 10 · Cr D 10</span>
+        <span class="chip">10 topics</span>
+      </div>
+    </div>
+
+    <!-- ================= 01 SI UNITS ================= -->
+    <section class="topic" id="units">
+      <div class="topic-head"><span class="topic-num">01</span><h2>SI Units &amp; Dimensional Analysis</h2></div>
+      
+      <p>The <strong>SI system</strong> (Système International) is the standard set of units used in science. Every physical quantity is either a <strong>fundamental (base) quantity</strong>, with its own defined unit, or a <strong>derived quantity</strong>, whose unit is built by combining base units.</p>
+
+      <table class="dtab">
+        <tr><th>Base quantity</th><th>SI unit</th><th>Symbol</th></tr>
+        <tr><td>Length</td><td>metre</td><td>m</td></tr>
+        <tr><td>Mass</td><td>kilogram</td><td>kg</td></tr>
+        <tr><td>Time</td><td>second</td><td>s</td></tr>
+        <tr><td>Electric current</td><td>ampere</td><td>A</td></tr>
+        <tr><td>Temperature</td><td>kelvin</td><td>K</td></tr>
+        <tr><td>Amount of substance</td><td>mole</td><td>mol</td></tr>
+        <tr><td>Luminous intensity</td><td>candela</td><td>cd</td></tr>
+      </table>
+
+      <div class="card formula">
+        <h4>Derived units</h4>
+        <p>A derived unit is built from base units through a defining equation. E.g. speed = distance/time → unit = m/s. Force = mass × acceleration → unit = kg·m/s², which is given the special name <strong>newton (N)</strong>.</p>
+      </div>
+
+      <div class="card example">
+        <h4>Dimensional analysis</h4>
+        <p>Dimensional analysis expresses a quantity in terms of the dimensions of mass [M], length [L], and time [T]. It is used to (a) check whether an equation is physically consistent, (b) derive the unit of an unfamiliar quantity, and (c) convert between unit systems.</p>
+        <p><strong>Worked example:</strong> Check that \(v^2=u^2+2as\) is dimensionally consistent.</p>
+        \[ [LT^{-1}]^2 \;\overset{?}{=}\; [LT^{-1}]^2 + [LT^{-2}][L] \]
+        \[ [L^2T^{-2}] = [L^2T^{-2}] + [L^2T^{-2}] \;\checkmark \]
+        <p>Every term has the same dimensions, so the equation is dimensionally consistent (though this method cannot confirm the numerical constants, like the "2", are correct).</p>
+      </div>
+
+      <div class="practice">
+        <h3>Practice questions</h3>
+        <details class="q">
+          <summary>
+            <div class="qtext">1. <strong>Identify</strong> the SI base units of mass, length and time, and <strong>derive</strong> the SI unit of force from F = ma.
+              <div class="qmeta"><span class="tag">Practice</span></div>
+            </div>
+            <span class="toggle-ico"></span>
+          </summary>
+          <div class="answer">
+            <span class="lbl">Model answer</span>
+            Mass: kg, length: m, time: s. Since F = ma, the unit of force = kg × (m/s²) = kg·m·s⁻² = N.
+          </div>
+        </details>
+        <details class="q">
+          <summary>
+            <div class="qtext">2. <strong>Use</strong> dimensional analysis to check whether \(s = ut + at^2\) (without the ½) could still be dimensionally valid, and <strong>explain</strong> what this tells you about the limits of dimensional analysis.
+              <div class="qmeta"><span class="tag">Practice</span></div>
+            </div>
+            <span class="toggle-ico"></span>
+          </summary>
+          <div class="answer">
+            <span class="lbl">Model answer</span>
+            [L] = [LT⁻¹][T] + [LT⁻²][T²] = [L] + [L], which is still dimensionally consistent even without the ½. This shows dimensional analysis can confirm an equation's <em>structure</em> is plausible, but it cannot detect missing or incorrect pure numbers (like ½), since numbers have no dimensions.
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- ================= 02 RECAP ================= -->
+    <section class="topic" id="recap">
+      <div class="topic-head"><span class="topic-num">02</span><h2>Recap: Distance, Displacement, Speed, Velocity &amp; Acceleration</h2></div>
+      
+      <table class="dtab">
+        <tr><th>Quantity</th><th>Type</th><th>Definition</th></tr>
+        <tr><td><strong>Distance</strong></td><td>Scalar</td><td>Total length of the path travelled.</td></tr>
+        <tr><td><strong>Displacement</strong></td><td>Vector</td><td>Straight-line distance from start to end, in a stated direction.</td></tr>
+        <tr><td><strong>Speed</strong></td><td>Scalar</td><td>Distance travelled per unit time.</td></tr>
+        <tr><td><strong>Velocity</strong></td><td>Vector</td><td>Displacement per unit time, in a stated direction.</td></tr>
+        <tr><td><strong>Acceleration</strong></td><td>Vector</td><td>Rate of change of velocity: \(a=(v-u)/t\).</td></tr>
+      </table>
+
+      <div class="card note">
+        <h4>Quick check</h4>
+        <p>A runner completing one lap of a track has travelled a large <strong>distance</strong>, but their <strong>displacement</strong> is zero, since they return to the start.</p>
+      </div>
+
+      <div class="practice">
+        <h3>Practice question</h3>
+        <details class="q">
+          <summary>
+            <div class="qtext">A cyclist rides 400 m east, then 150 m west. <strong>Calculate</strong> (a) the total distance travelled, and (b) the final displacement.
+              <div class="qmeta"><span class="tag">Practice</span></div>
+            </div>
+            <span class="toggle-ico"></span>
+          </summary>
+          <div class="answer">
+            <span class="lbl">Model answer</span>
+            (a) 400+150 = <strong>550 m</strong>. (b) 400−150 = <strong>250 m east</strong>.
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- ================= 03 D-T GRAPHS ================= -->
+    <section class="topic" id="dtgraph">
+      <div class="topic-head"><span class="topic-num">03</span><h2>Displacement–Time Graphs</h2></div>
+      
+      <div class="card formula">
+        <h4>Gradient of a d–t graph = velocity</h4>
+        \[ \text{gradient} = \frac{\Delta s}{\Delta t} = \text{velocity} \]
+      </div>
+
+      <table class="dtab">
+        <tr><th>Feature</th><th>Meaning</th></tr>
+        <tr><td>Straight line, positive slope</td><td>Constant velocity, moving away from start.</td></tr>
+        <tr><td>Horizontal line</td><td>Object at rest (zero velocity).</td></tr>
+        <tr><td>Straight line, negative slope</td><td>Constant velocity, moving back toward start.</td></tr>
+        <tr><td>Curve steepening</td><td>Velocity increasing — accelerating.</td></tr>
+        <tr><td>Curve flattening</td><td>Velocity decreasing — decelerating.</td></tr>
+      </table>
+
+      <div class="practice">
+        <h3>Practice question</h3>
+        <details class="q">
+          <summary>
+            <div class="qtext">A hiker's displacement rises steadily from 0 m to 900 m over 30 minutes, then stays flat for 10 minutes. <strong>Describe</strong> the motion in each section, and <strong>calculate</strong> the hiker's velocity during the first section.
+              <div class="qmeta"><span class="tag">Practice</span></div>
+            </div>
+            <span class="toggle-ico"></span>
+          </summary>
+          <div class="answer">
+            <span class="lbl">Model answer</span>
+            First 30 min: constant positive velocity, moving away from the start. Next 10 min: at rest (zero gradient). Velocity = 900/30 = <strong>30 m per minute</strong>.
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- ================= 04 V-T GRAPHS ================= -->
+    <section class="topic" id="vtgraph">
+      <div class="topic-head"><span class="topic-num">04</span><h2>Velocity–Time Graphs</h2></div>
+      
+      <div class="card formula">
+        <h4>The two golden rules</h4>
+        <ul class="clean">
+          <li><strong>Gradient = acceleration.</strong> Steeper = greater acceleration; flat = constant velocity; negative slope = deceleration.</li>
+          <li><strong>Area under the graph = displacement.</strong> Split the shape into triangles, rectangles and trapeziums.</li>
+        </ul>
+        \[ a=\frac{\Delta v}{\Delta t} \qquad\qquad s = \text{area under the graph} \]
+      </div>
+
+      <div style="max-width: 460px; margin: 24px 0;">
+        <svg viewBox="0 0 460 260" class="w-full h-auto">
+            <line x1="40" y1="220" x2="440" y2="220" stroke="#475569" stroke-width="1.5"/>
+            <line x1="40" y1="220" x2="40" y2="20" stroke="#475569" stroke-width="1.5"/>
+            <polygon points="40,220 135,60 325,60 420,220" fill="#0ea5e9" fill-opacity="0.12"/>
+            <polyline points="40,220 135,60 325,60 420,220" fill="none" stroke="#38bdf8" stroke-width="3"/>
+            <line x1="135" y1="60" x2="135" y2="220" stroke="#64748b" stroke-width="1" stroke-dasharray="3,3"/>
+            <line x1="325" y1="60" x2="325" y2="220" stroke="#64748b" stroke-width="1" stroke-dasharray="3,3"/>
+            <text x="20" y="65" fill="#94a3b8" font-size="12" text-anchor="end">20</text>
+            <text x="20" y="224" fill="#94a3b8" font-size="12" text-anchor="end">0</text>
+            <text x="135" y="238" fill="#94a3b8" font-size="12" text-anchor="middle">5</text>
+            <text x="325" y="238" fill="#94a3b8" font-size="12" text-anchor="middle">15</text>
+            <text x="420" y="238" fill="#94a3b8" font-size="12" text-anchor="middle">20</text>
+            <text x="240" y="252" fill="#cbd5e1" font-size="13" text-anchor="middle">Time (s)</text>
+            <text x="14" y="16" fill="#cbd5e1" font-size="13">Speed (m/s)</text>
+        </svg>
+      </div>
+
+      <div class="card example">
+        <h4>Worked example</h4>
+        <p>A van accelerates from rest to 20 m/s in 5 s, holds 20 m/s for 10 s, then decelerates to rest over 5 s.</p>
+        <p class="mono">a (0–5s) = 20/5 = 4 m/s² &nbsp;·&nbsp; a (15–20s) = −20/5 = −4 m/s²</p>
+        <p class="mono">Displacement = 50 + 200 + 50 = 300 m (two triangles + a rectangle)</p>
+      </div>
+
+      <div class="practice">
+        <h3>Practice question</h3>
+        <details class="q">
+          <summary>
+            <div class="qtext">A scooter accelerates from rest to 12 m/s in 6 s, holds that speed for 8 s, then brakes to a stop in 4 s. <strong>Calculate</strong> the total distance travelled.
+              <div class="qmeta"><span class="tag">Practice</span></div>
+            </div>
+            <span class="toggle-ico"></span>
+          </summary>
+          <div class="answer">
+            <span class="lbl">Model answer</span>
+            Triangle: ½×6×12=36 m. Rectangle: 8×12=96 m. Triangle: ½×4×12=24 m. Total = <strong>156 m</strong>.
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- ================= 05 INSTANT VS AVERAGE ================= -->
+    <section class="topic" id="instavg">
+      <div class="topic-head"><span class="topic-num">05</span><h2>Instantaneous vs. Average Velocity</h2></div>
+      
+      <p><strong>Average velocity</strong> is the overall displacement divided by the overall time taken for a journey — it hides any speeding up or slowing down that happened along the way. <strong>Instantaneous velocity</strong> is the velocity at one exact moment in time.</p>
+
+      <div class="card formula">
+        <h4>How to determine each, graphically</h4>
+        <ul class="clean">
+          <li><strong>Average velocity</strong> between two points on a d–t graph = the gradient of the straight <strong>chord</strong> connecting those two points.</li>
+          <li><strong>Instantaneous velocity</strong> at one point on a d–t graph = the gradient of the <strong>tangent</strong> touching the curve at that exact point.</li>
+          <li>On a v–t graph, instantaneous velocity is simply the y-value read off at that time; average velocity is the total area (displacement) divided by the total time.</li>
+        </ul>
+        <p>For <strong>uniformly</strong> accelerated motion only, average velocity also equals the mean of the initial and final velocities:</p>
+        \[ \bar{v} = \frac{u+v}{2} \]
+      </div>
+
+      <div class="card example">
+        <h4>Worked example</h4>
+        <p>A car accelerates uniformly from 10 m/s to 30 m/s over 8 s. Average velocity = (10+30)/2 = 20 m/s, so distance travelled = 20 × 8 = <strong>160 m</strong>.</p>
+      </div>
+
+      <div class="practice">
+        <h3>Practice questions</h3>
+        <details class="q">
+          <summary>
+            <div class="qtext">1. <strong>Distinguish</strong> between instantaneous and average velocity, and <strong>explain</strong> how each is found from a displacement–time graph.
+              <div class="qmeta"><span class="tag">Practice</span></div>
+            </div>
+            <span class="toggle-ico"></span>
+          </summary>
+          <div class="answer">
+            <span class="lbl">Model answer</span>
+            Instantaneous velocity is the velocity at one specific instant, found from the gradient of the tangent to the curve at that point. Average velocity is the overall rate over an interval, found from the gradient of the chord joining the start and end points of that interval (or total displacement ÷ total time).
+          </div>
+        </details>
+        <details class="q">
+          <summary>
+            <div class="qtext">2. A runner's position is 8 m at t=2s and 32 m at t=6s. <strong>Calculate</strong> their average velocity over this interval. If the runner was momentarily moving at exactly this speed at some point during the interval, would that be their instantaneous or average velocity at that moment?
+              <div class="qmeta"><span class="tag">Practice</span></div>
+            </div>
+            <span class="toggle-ico"></span>
+          </summary>
+          <div class="answer">
+            <span class="lbl">Model answer</span>
+            Average velocity = (32−8)/(6−2) = 24/4 = <strong>6 m/s</strong>. If the runner happens to be moving at exactly 6 m/s at some instant, that reading would be their <strong>instantaneous</strong> velocity at that moment — it's a coincidence that it matches the average, not the same concept.
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- ================= 06 SUVAT ================= -->
+    <section class="topic" id="suvat">
+      <div class="topic-head"><span class="topic-num">06</span><h2>Motion with Uniform &amp; Non-Uniform Acceleration; the Equations of Motion</h2></div>
+      
+      <table class="dtab">
+        <tr><th>Type of acceleration</th><th>What it looks like</th></tr>
+        <tr><td><strong>Uniform</strong></td><td>Acceleration is constant — velocity changes by equal amounts in equal time intervals. Straight line on a v–t graph.</td></tr>
+        <tr><td><strong>Non-uniform</strong></td><td>Acceleration itself changes over time. Curved line on a v–t graph.</td></tr>
+      </table>
+
+      <div class="card formula">
+        <h4>The equations of motion (SUVAT) — apply only to uniform acceleration</h4>
+        \[ v = u + at \qquad s = ut+\tfrac{1}{2}at^2 \qquad v^2=u^2+2as \qquad s=\left(\frac{u+v}{2}\right)t \]
+      </div>
+
+      <div class="card example">
+        <h4>Worked example — application</h4>
+        <p>A car travelling at 25 m/s brakes with a uniform deceleration of 5 m/s². Find its braking distance.</p>
+        \[ v^2=u^2+2as \Rightarrow 0 = 625 - 2(5)s \Rightarrow s = 62.5\text{ m} \]
+      </div>
+
+      <div class="practice">
+        <h3>Practice questions</h3>
+        <details class="q">
+          <summary>
+            <div class="qtext">1. A cyclist moving at 4 m/s accelerates uniformly at 1.5 m/s² for 6 s. <strong>Calculate</strong> the distance covered.
+              <div class="qmeta"><span class="tag">Practice</span></div>
+            </div>
+            <span class="toggle-ico"></span>
+          </summary>
+          <div class="answer">
+            <span class="lbl">Model answer</span>
+            \(s=ut+\tfrac{1}{2}at^2=(4)(6)+\tfrac{1}{2}(1.5)(36)=24+27=51\text{ m}\).
+          </div>
+        </details>
+        <details class="q">
+          <summary>
+            <div class="qtext">2. <strong>Explain</strong> why the SUVAT equations cannot be used directly for a car easing to a stop in heavy stop-start traffic.
+              <div class="qmeta"><span class="tag">Practice</span></div>
+            </div>
+            <span class="toggle-ico"></span>
+          </summary>
+          <div class="answer">
+            <span class="lbl">Model answer</span>
+            The SUVAT equations only apply when acceleration is uniform (constant). In stop-start traffic, the car's acceleration changes repeatedly and unpredictably (non-uniform), so a single value of "a" cannot describe the whole journey.
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- ================= 07 FREE BODY ================= -->
+    <section class="topic" id="freebody">
+      <div class="topic-head"><span class="topic-num">07</span><h2>Forces, Free-Body Diagrams &amp; Resultant Force</h2></div>
+      
+      <p>A <strong>free-body diagram</strong> isolates a single object and shows every force acting on it as an arrow, drawn from the object's centre, pointing in the force's direction, with its length roughly indicating its size.</p>
+
+      <table class="dtab">
+        <tr><th>Force</th><th>Description</th></tr>
+        <tr><td>Gravitational force (weight)</td><td>Pulls the object toward the Earth's centre; acts vertically downward, W = mg.</td></tr>
+        <tr><td>Normal force (F<sub>N</sub>)</td><td>Support force a surface exerts perpendicular to itself.</td></tr>
+        <tr><td>Surface friction (F<sub>f</sub>)</td><td>Opposes relative sliding between two surfaces in contact.</td></tr>
+        <tr><td>Tension</td><td>Pulling force transmitted through a string, rope or cable.</td></tr>
+        <tr><td>Viscous drag</td><td>Resistive force opposing motion through a fluid — acts opposite to the direction of motion.</td></tr>
+        <tr><td>Buoyancy (upthrust)</td><td>Resistive/supporting force a fluid exerts upward on a submerged or floating object.</td></tr>
+      </table>
+
+      <div class="card note">
+        <h4>Viscous drag &amp; buoyancy — direction only</h4>
+        <p>At this stage you only need to know the <strong>direction</strong> of viscous drag and buoyancy, and that both are examples of <strong>resistive forces</strong> (they oppose motion or oppose sinking) — not how to calculate their size.</p>
+      </div>
+
+      <div class="card formula">
+        <h4>Calculating resultant force — including planar (angled) forces</h4>
+        <p>For forces along the same line, simply add (same direction) or subtract (opposite directions). For <strong>planar forces</strong> — two forces at an angle to each other, e.g. perpendicular — combine them the same way you combine vectors: with Pythagoras' theorem and trigonometry.</p>
+        \[ R=\sqrt{F_1^2+F_2^2} \qquad \theta = \tan^{-1}\left(\frac{F_2}{F_1}\right) \]
+        <p><strong>Worked example:</strong> A box experiences a 30 N horizontal force and a 40 N vertical force at the same time. \(R=\sqrt{30^2+40^2}=50\text{ N}\), at \(\theta=\tan^{-1}(40/30)\approx53.1°\) from the horizontal.</p>
+      </div>
+
+      <div class="practice">
+        <h3>Practice questions</h3>
+        <details class="q">
+          <summary>
+            <div class="qtext">1. A book rests on a table. <strong>Draw (describe in words)</strong> the free-body diagram, naming each force and its direction.
+              <div class="qmeta"><span class="tag">Practice</span></div>
+            </div>
+            <span class="toggle-ico"></span>
+          </summary>
+          <div class="answer">
+            <span class="lbl">Model answer</span>
+            Two forces: weight (W = mg) acting vertically downward from the book's centre, and the normal force (F<sub>N</sub>) acting vertically upward from the table's surface. Since the book is in equilibrium, these two arrows are equal in length and opposite in direction.
+          </div>
+        </details>
+        <details class="q">
+          <summary>
+            <div class="qtext">2. A swimmer experiences a forward thrust of 80 N and a sideways current force of 60 N, acting at right angles to each other. <strong>Calculate</strong> the magnitude and direction of the resultant force.
+              <div class="qmeta"><span class="tag">Practice</span></div>
+            </div>
+            <span class="toggle-ico"></span>
+          </summary>
+          <div class="answer">
+            <span class="lbl">Model answer</span>
+            \(R=\sqrt{80^2+60^2}=\sqrt{10000}=100\text{ N}\). \(\theta=\tan^{-1}(60/80)\approx36.9°\) from the direction of thrust.
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- ================= 08 FIRST LAW ================= -->
+    <section class="topic" id="firstlaw">
+      <div class="topic-head"><span class="topic-num">08</span><h2>Newton's First Law &amp; the Three Types of Inertia</h2></div>
+      
+      <div class="card formula">
+        <h4>Newton's First Law</h4>
+        <p>An object remains at rest, or continues to move at constant velocity, unless acted upon by a resultant (net) external force. <strong>Inertia</strong> is the tendency of an object to resist a change in its state of motion — and mass is the measure of how much inertia an object has.</p>
+      </div>
+
+      <table class="dtab">
+        <tr><th>Type of inertia</th><th>Description</th><th>Example</th></tr>
+        <tr><td><strong>Inertia of rest</strong></td><td>A stationary object tends to stay stationary.</td><td>A coin balanced on a card over a glass stays put when the card is flicked away sharply — then drops straight into the glass.</td></tr>
+        <tr><td><strong>Inertia of motion</strong></td><td>A moving object tends to keep moving.</td><td>A standing bus passenger lurches forward when the bus suddenly brakes.</td></tr>
+        <tr><td><strong>Inertia of direction</strong></td><td>A moving object tends to keep moving in the same straight-line direction.</td><td>Mud flung off a fast-spinning bicycle tyre flies off in a straight line, tangent to the wheel, rather than curving with it.</td></tr>
+      </table>
+
+      <div class="practice">
+        <h3>Practice questions</h3>
+        <details class="q">
+          <summary>
+            <div class="qtext">1. A tablecloth is yanked quickly from under dishes, leaving the dishes almost undisturbed on the table. <strong>Identify</strong> which type of inertia this demonstrates, and <strong>explain</strong> your answer.
+              <div class="qmeta"><span class="tag">Practice</span></div>
+            </div>
+            <span class="toggle-ico"></span>
+          </summary>
+          <div class="answer">
+            <span class="lbl">Model answer</span>
+            <strong>Inertia of rest.</strong> The dishes are initially at rest, and the cloth is removed so quickly (with such little friction acting on the dishes) that there is not enough time for a significant resultant force to act on them — so by Newton's First Law they remain almost stationary.
+          </div>
+        </details>
+        <details class="q">
+          <summary>
+            <div class="qtext">2. A car travelling in a straight line suddenly turns sharply left. <strong>Explain</strong>, using Newton's First Law, why an unbelted passenger seems to be "thrown" toward the right-hand side of the car.
+              <div class="qmeta"><span class="tag">Practice</span></div>
+            </div>
+            <span class="toggle-ico"></span>
+          </summary>
+          <div class="answer">
+            <span class="lbl">Model answer</span>
+            This is inertia of direction: the passenger's body tends to keep travelling in the original straight-line direction. As the car (and its seat) turns left beneath them, the passenger's body — with no direct force turning it — continues forward, which relative to the now-turning car looks like being flung toward the right.
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- ================= 09 SECOND LAW ================= -->
+    <section class="topic" id="secondlaw">
+      <div class="topic-head"><span class="topic-num">09</span><h2>Newton's Second Law &amp; Linear Momentum</h2></div>
+      
+      <div class="card formula">
+        <h4>Two forms of the second law</h4>
+        \[ F = ma \qquad\qquad F = \frac{\Delta p}{\Delta t} \]
+        <p><strong>F = ma</strong> assumes the object's mass stays constant. <strong>F = Δp/Δt</strong> is the more general form — since \(p=mv\), this equals \(\Delta(mv)/\Delta t\), which still works even in situations where mass itself is changing (for example, a rocket burning and losing fuel mass as it accelerates). You won't be asked to calculate numerical examples where mass changes — just to understand why this form is more general.</p>
+      </div>
+
+      <div class="card formula">
+        <h4>Linear momentum</h4>
+        \[ p = mv \]
+        <p>Momentum remains <strong>constant</strong> unless a resultant external force acts on the system (conservation of momentum).</p>
+      </div>
+
+      <div class="card example">
+        <h4>Worked examples</h4>
+        <p><strong>F = ma:</strong> Force to accelerate a 1200 kg car at 2.5 m/s².</p>
+        <p class="mono">F = 1200 × 2.5 = 3000 N</p>
+        <p><strong>F = Δp/Δt</strong> (mass constant): A 0.5 kg ball's speed changes from 2 m/s to 10 m/s in 0.4 s. Find the average force.</p>
+        <p class="mono">Δp = m·Δv = 0.5×(10−2) = 4 kg·m/s. F = 4/0.4 = 10 N</p>
+      </div>
+
+      <div class="practice">
+        <h3>Practice questions</h3>
+        <details class="q">
+          <summary>
+            <div class="qtext">1. <strong>Explain</strong> why F = Δp/Δt is considered more general than F = ma.
+              <div class="qmeta"><span class="tag">Practice</span></div>
+            </div>
+            <span class="toggle-ico"></span>
+          </summary>
+          <div class="answer">
+            <span class="lbl">Model answer</span>
+            F = ma only holds when mass stays constant. F = Δp/Δt = Δ(mv)/Δt accounts for momentum changing due to a change in velocity, a change in mass, or both — so it remains valid even when an object's mass is changing over time, a situation F = ma cannot describe.
+          </div>
+        </details>
+        <details class="q">
+          <summary>
+            <div class="qtext">2. A 2 kg trolley moving at 3 m/s collides and sticks to a stationary 1 kg trolley. <strong>Use</strong> conservation of momentum to find their common velocity after the collision.
+              <div class="qmeta"><span class="tag">Practice</span></div>
+            </div>
+            <span class="toggle-ico"></span>
+          </summary>
+          <div class="answer">
+            <span class="lbl">Model answer</span>
+            Momentum before = (2×3)+(1×0) = 6 kg·m/s. After: (2+1)v = 6 → v = <strong>2 m/s</strong>.
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- ================= 10 IMPULSE ================= -->
+    <section class="topic" id="impulse">
+      <div class="topic-head"><span class="topic-num">10</span><h2>Impulse &amp; Its Applications</h2></div>
+      
+      <div class="card formula">
+        <h4>Definition</h4>
+        <p>A resultant external force applied to a system for a time Δt constitutes an <strong>impulse J</strong>:</p>
+        \[ J = F\Delta t = \Delta p \]
+        <p>The impulse applied to a system equals the change in its momentum. Rearranging shows that for a <em>given</em> change in momentum, a <strong>longer contact time means a smaller average force</strong> — this is the basis for most safety applications.</p>
+      </div>
+
+      <table class="dtab">
+        <tr><th>Application</th><th>How it uses impulse</th></tr>
+        <tr><td>Crumple zones (cars)</td><td>Deform and increase the time taken to stop in a crash, reducing the average force on occupants for the same change in momentum.</td></tr>
+        <tr><td>Airbags</td><td>Increase the time over which a passenger's head/body decelerates, reducing the peak force experienced.</td></tr>
+        <tr><td>Safety padding (helmets, mats)</td><td>Extends the collision time, lowering the average force transmitted to the body.</td></tr>
+        <tr><td>Follow-through in sports</td><td>Extending the contact time between bat/racket/foot and ball increases the impulse delivered for a given applied force — increasing the ball's final momentum (speed).</td></tr>
+      </table>
+
+      <div class="card note">
+        <h4>Two different goals, same formula</h4>
+        <p>Safety devices (crumple zones, airbags, padding) increase Δt to <strong>reduce the force</strong> for a fixed, unavoidable Δp. Follow-through in sports increases Δt to <strong>increase the impulse</strong> (and so the ball's momentum) for a given force the athlete can apply.</p>
+      </div>
+
+      <div class="card example">
+        <h4>Worked example</h4>
+        <p>A 60 kg passenger is brought to rest from 20 m/s in a collision. Compare the average force if the collision lasts 0.1 s (rigid car) vs. 0.5 s (car with a crumple zone).</p>
+        <p class="mono">Δp = 60 × 20 = 1200 kg·m/s</p>
+        <p class="mono">Rigid: F = 1200/0.1 = 12,000 N</p>
+        <p class="mono">Crumple zone: F = 1200/0.5 = 2,400 N — a fivefold reduction</p>
+      </div>
+
+      <div class="practice">
+        <h3>Practice questions</h3>
+        <details class="q">
+          <summary>
+            <div class="qtext">1. A 0.15 kg cricket ball travelling at 25 m/s is caught and brought to rest in 0.3 s. <strong>Calculate</strong> the impulse, and the average force on the fielder's hands.
+              <div class="qmeta"><span class="tag">Practice</span></div>
+            </div>
+            <span class="toggle-ico"></span>
+          </summary>
+          <div class="answer">
+            <span class="lbl">Model answer</span>
+            Impulse = Δp = m×Δv = 0.15×25 = <strong>3.75 kg·m/s (N·s)</strong>. Force = J/Δt = 3.75/0.3 = <strong>12.5 N</strong>.
+          </div>
+        </details>
+        <details class="q">
+          <summary>
+            <div class="qtext">2. <strong>Explain</strong> why a cricketer "gives" with their hands (draws them backward) while catching a fast-moving ball, using the concept of impulse.
+              <div class="qmeta"><span class="tag">Practice</span></div>
+            </div>
+            <span class="toggle-ico"></span>
+          </summary>
+          <div class="answer">
+            <span class="lbl">Model answer</span>
+            The ball's change in momentum (impulse needed to stop it) is fixed. By drawing the hands back, the cricketer increases the time Δt over which the ball decelerates, which — since J=FΔt is constant — reduces the average force F on their hands, making the catch less painful and less likely to be dropped.
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <footer>
+      Physics Midterm Exam Prep — compiled directly from the teacher's topic list (1.1 Motion, 1.2 Types of Forces and Newton's Laws). Key formulas: \(v=u+at\), \(s=ut+\tfrac{1}{2}at^2\), \(v^2=u^2+2as\), \(F=ma\), \(F=\Delta p/\Delta t\), \(p=mv\), \(J=F\Delta t=\Delta p\).
+    </footer>
+  </main>
+</div>
+
+<a href="#" class="backtop" id="backtop" aria-label="Back to top">↑</a>
+
+<script>
+  const links = document.querySelectorAll('.toc-list a');
+  const sections = Array.from(links).map(l => document.querySelector(l.getAttribute('href')));
+  function onScroll(){
+    let idx = 0;
+    const y = window.scrollY + 120;
+    sections.forEach((sec,i)=>{ if(sec && sec.offsetTop <= y) idx = i; });
+    links.forEach(l=>l.classList.remove('active'));
+    if(links[idx]) links[idx].classList.add('active');
+    document.getElementById('backtop').classList.toggle('show', window.scrollY > 600);
+  }
+  window.addEventListener('scroll', onScroll);
+  onScroll();
+  document.getElementById('backtop').addEventListener('click', e=>{ e.preventDefault(); window.scrollTo({top:0,behavior:'smooth'}); });
+</script>
+
+</body>
+</html>
